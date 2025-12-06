@@ -158,7 +158,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 key={cert.name}
                 className="w-32 md:w-40 h-20 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
               >
-                <img 
+                <img
                   src={cert.image} 
                   alt={cert.name}
                   loading="lazy"
