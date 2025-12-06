@@ -148,11 +148,11 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <Hero />
+      <Hero videoSrc="/hero.mp4" />
 
       {/* About Edwin Section - Full Text Display */}
       {/* Example: To add a background image, use: <SectionWrapper bgImage="/path/to/image.jpg"> */}
-      <SectionWrapper id="about" className="py-s-12 bg-neutral-light">
+      <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-12 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[600px] lg:min-h-[700px]">
             {/* Image on Far Left - Takes 4 columns */}
@@ -230,9 +230,9 @@ const IndexPage: React.FC<PageProps> = () => {
       </SectionWrapper>
 
       {/* Team Members Section */}
-      <SectionWrapper id="team" className="py-s-10 bg-neutral-white">
+      <SectionWrapper bgImage="/team-bg.jpg" bgOverlay={true} id="team" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
+          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-white mb-s-8">
             {t.team?.title || "Nuestro Equipo"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-s-12 mt-s-8 max-w-4xl mx-auto">
@@ -253,10 +253,10 @@ const IndexPage: React.FC<PageProps> = () => {
                     </div>
                   )}
                 </div>
-                <h3 className="text-h-l font-heading font-normal text-neutral-dark mb-2">
+                <h3 className="text-h-l font-heading font-normal text-neutral-white mb-2">
                   {member.name}
                 </h3>
-                <p className="text-b-l text-secondary-dark font-body font-semibold">
+                <p className="text-b-l text-neutral-white font-body font-semibold">
                   {member.title}
                 </p>
               </div>

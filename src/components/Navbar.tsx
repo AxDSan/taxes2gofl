@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
                     className={`transition-all font-body text-sm font-bold uppercase tracking-wide hover:underline ${
                       scrolled 
                         ? "text-neutral-medium-dark hover:text-neutral-dark" 
-                        : "text-primary hover:text-primary-medium"
+                        : "text-neutral-white hover:text-neutral-white/80"
                     }`}
                   >
                     {link.name}
@@ -150,11 +150,7 @@ const Navbar: React.FC = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className={`block py-3 px-6 hover:bg-neutral-light transition-all font-body text-sm font-bold uppercase tracking-wide hover:underline ${
-                        scrolled 
-                          ? "text-neutral-medium-dark hover:text-neutral-dark" 
-                          : "text-primary hover:text-primary-medium"
-                      }`}
+                      className="block py-3 px-6 hover:bg-neutral-light transition-all font-body text-sm font-bold uppercase tracking-wide hover:underline text-neutral-medium-dark hover:text-neutral-dark"
                       onClick={(e) => {
                         setIsOpen(false)
                         if (link.href === "/") handleHomeClick(e)
