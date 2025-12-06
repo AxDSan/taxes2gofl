@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <SmoothScroll>
-      <div className="min-h-screen flex flex-col bg-light text-neutral-900 font-sans">
+      <div className="min-h-screen flex flex-col bg-neutral-white text-neutral-dark font-body">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

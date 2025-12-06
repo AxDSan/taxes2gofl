@@ -18,10 +18,20 @@ export const translations = {
       cta: "Contáctanos Hoy",
       services: "Nuestros Servicios",
     },
+    contact: {
+      title: "Contáctanos Hoy",
+      address: "Dirección",
+      phone: "Teléfono / WhatsApp",
+      email: "Email",
+    },
+    video: {
+      title: "Mensaje de Edwin",
+    },
     about: {
       title: "About Edwin Venezuela, EA, MSCTA",
       subtitle: "Somos una firma contributiva y de planificación financiera liderada por Edwin Venezuela, Enrolled Agent (Agente Enrolado ante el IRS) y Tax Advisor Certificado, con más de 23 años de experiencia en el sistema contributivo de Estados Unidos.",
       description: "Desde nuestra oficina en Orlando, Florida, contamos con un equipo altamente capacitado, comprometido con ofrecer un servicio profesional, confidencial y accesible tanto a individuos como a negocios de todos los tamaños. Nos especializamos en planillas de individuo, planillas de negocio, planillas corporativas y entidades conducto (S-Corporations, LLCs, Partnerships), así como en el manejo de planillas federales y estatales. Atendemos dueños de pequeños negocios, profesionales por cuenta propia, inversionistas y corporaciones que buscan una planificación fiscal sólida y cumplimiento total con el IRS y las autoridades estatales. Combinamos conocimiento técnico, experiencia práctica y atención al detalle para ayudarte a maximizar tus beneficios contributivos, reducir riesgos y apoyar el crecimiento ordenado de tu negocio y tu patrimonio. Nuestro objetivo es brindarte claridad, orientación estratégica y acompañamiento continuo, para que tomes decisiones informadas y tengas la tranquilidad de que tus obligaciones contributivas están en manos de un equipo experto.",
+      experienceBadge: "Más de 23 años de experiencia",
     },
     team: {
       title: "Nuestro Equipo",
@@ -35,8 +45,18 @@ export const translations = {
       },
     },
     services: {
-      title: "Otros Servicios Especializados",
-      subtitle: "Servicios especializados para individuos y empresas",
+      title: "Servicios",
+      subtitle: "Soluciones fiscales completas para individuos y negocios",
+      specializedTitle: "Otros Servicios Especializados",
+      specializedSubtitle: "Servicios especializados para individuos y empresas",
+      mainServices: {
+        individualFederal: "Planilla Federal Individual",
+        sCorp: "Planillas S-Corp",
+        llc: "Planillas LLC",
+        selfEmployed: "Planilla Trabajador por Cuenta Propia",
+        rent: "Planillas de Renta",
+        taxAdvising: "Asesoría Fiscal",
+      },
       planificacion: {
         title: "Planificación Contributiva Estratégica para Individuos y Pequeños Negocios en Estados Unidos",
         description: "Deja de reaccionar en tax season y comienza a planificar durante todo el año. Edwin Venezuela ayuda a empleados W-2, freelancers y trabajadores por cuenta propia en Estados Unidos a diseñar una ruta contributiva clara, identificando deducciones y créditos disponibles bajo las leyes federales y estatales. A través de una asesoría proactiva, los clientes aprenden a tomar decisiones financieras inteligentes que reducen su carga contributiva y mejoran su flujo de efectivo.",
@@ -180,6 +200,18 @@ export const translations = {
       termsAndConditions: "Terms & Conditions",
     },
     services: {
+      title: "Services",
+      subtitle: "Complete tax solutions for individuals and businesses",
+      specializedTitle: "Other Specialized Services",
+      specializedSubtitle: "Specialized services for individuals and businesses",
+      mainServices: {
+        individualFederal: "Individual Federal Tax Return",
+        sCorp: "S-Corp Returns",
+        llc: "LLC Returns",
+        selfEmployed: "Self-Employed Return",
+        rent: "Rent Returns",
+        taxAdvising: "Tax Advising",
+      },
       categories: {
         taxComplianceNegocios: "Business Tax Compliance",
         planillasIndividuo: "Individual Tax Returns (PR)",
@@ -265,10 +297,20 @@ export const translations = {
       cta: "Contact Us Today",
       services: "Our Services",
     },
+    contact: {
+      title: "Contact Us Today",
+      address: "Address",
+      phone: "Phone / WhatsApp",
+      email: "Email",
+    },
+    video: {
+      title: "Edwin's Message",
+    },
     about: {
       title: "About Edwin Venezuela, EA, MSCTA",
       subtitle: "We are a tax and financial planning firm led by Edwin Venezuela, Enrolled Agent (IRS Enrolled Agent) and Certified Tax Advisor, with over 23 years of experience in the U.S. tax system.",
       description: "From our office in Orlando, Florida, we have a highly trained team committed to offering professional, confidential, and accessible service to both individuals and businesses of all sizes.",
+      experienceBadge: "Over 23 years of experience",
     },
     team: {
       title: "Our Team",

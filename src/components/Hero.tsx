@@ -11,110 +11,81 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({
   videoSrc,
   logoSrc,
-  slogan = "Confianza, cumplimiento y precisión fiscal para su empresa.",
+  slogan,
 }) => {
   const { t } = useI18n()
-
+  const heroSlogan = slogan || t.hero?.subtitle || "Confianza, cumplimiento y precisión fiscal para su empresa."
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-50 to-neutral-100">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-dark">
+      {/* Video Background */}
       {videoSrc ? (
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-neutral-100 to-primary-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-dark via-neutral-medium-dark to-neutral-dark" />
       )}
 
-      <div className="absolute inset-0 bg-white/40" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-neutral-dark/60" />
 
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 lg:px-20 max-w-5xl mx-auto">
         {logoSrc ? (
           <motion.img
             src={logoSrc}
             alt="Taxes 2 Go"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="h-44 md:h-60 lg:h-80 w-auto mx-auto mb-2"
+            transition={{ duration: 0.6 }}
+            className="h-32 md:h-40 lg:h-48 w-auto mx-auto mb-8"
           />
         ) : (
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-            style={{
-              fontFamily: '"Inter", sans-serif',
-              fontWeight: 800,
-            }}
+            transition={{ duration: 0.6 }}
+            className="text-display-2 font-heading font-normal text-neutral-white mb-6"
           >
-            <span className="text-primary-600">Taxes 2 Go</span>
+            Taxes 2 Go
           </motion.h1>
         )}
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="text-xl md:text-2xl text-neutral-700 mb-8 max-w-3xl mx-auto font-medium"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-h-m md:text-h-l text-neutral-white/90 mb-12 max-w-3xl mx-auto font-body font-normal italic leading-relaxed"
         >
-          {slogan}
+          &ldquo;{heroSlogan}&rdquo;
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <motion.a
+          <a
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg"
+            className="bg-primary text-neutral-white hover:bg-primary-medium px-8 py-4 font-body font-semibold text-sm uppercase tracking-wide transition-colors border border-primary-dark"
           >
-            Contáctanos Hoy
-          </motion.a>
-          <motion.a
+            {t.hero?.cta || "Contáctanos Hoy"}
+          </a>
+          <a
             href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-primary-600 hover:border-primary-700 text-primary-600 hover:text-primary-700 px-8 py-4 rounded-full font-semibold text-lg transition-colors bg-white"
+            className="bg-transparent border-2 border-neutral-white text-neutral-white hover:bg-neutral-white/10 px-8 py-4 font-body font-semibold text-sm uppercase tracking-wide transition-colors"
           >
-            Nuestros Servicios
-          </motion.a>
+            {t.hero?.services || "Nuestros Servicios"}
+          </a>
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{
-          opacity: { delay: 0.5, duration: 0.3 },
-          y: { delay: 0.5, duration: 1.5, repeat: Infinity },
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <svg
-          className="w-6 h-6 text-neutral-600/50"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </motion.div>
     </section>
   )
 }
