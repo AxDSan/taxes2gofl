@@ -67,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
               <img
                 src="/logo.png"
                 alt="Taxes 2 Go"
-                className="h-20 w-auto"
+                className="h-30 w-auto"
               />
             </div>
             <p className="text-neutral-white/60 mb-s-4 text-b-xs leading-relaxed font-body">

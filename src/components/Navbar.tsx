@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
             <img
               src="/logo.png"
               alt="Taxes 2 Go"
-              className="h-10 w-auto"
+              className="h-28 w-auto"
             />
           </Link>
 
