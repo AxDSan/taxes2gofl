@@ -1,0 +1,237 @@
+success compile gatsby files - 1.468s
+
+[2K[1A[2K[Gsuccess load gatsby config - 0.031s
+
+[2K[1A[2K[Gsuccess load plugins - 0.272s
+
+[2K[1A[2K[G
+ ERROR #11321  API.NODE.EXECUTION
+
+"gatsby-plugin-manifest" threw an error while running the onPreInit lifecycle:
+
+ENOENT: no such file or directory, open 'src/images/icon.png'
+
+  70 |   pluginOptions.cacheDigest = null;
+  71 |   if (pluginOptions.cache_busting_mode !== `none` && pluginOptions.icon)
+{
+> 72 |     pluginOptions.cacheDigest = (0,
+_gatsbyCoreUtils.createContentDigest)(fs.readFileSync(pluginOptions.icon));
+     |
+    ^
+  73 |   }
+  74 | };
+  75 | exports.onPostBootstrap = async ({
+
+File: node_modules/gatsby-plugin-manifest/gatsby-node.js:72:78
+
+
+[2K[1A[2K[G
+[0m
+[0m  [0m[97m[41mError[0m[37m[41m:[0m[37m[41m [0m[97m[41mENOENT: no such file or directory, open 'src/images/icon.png'[0m
+[0m  [0m
+[0m  [0m[90m-[0m [0m[93mnode:fs[0m[90m:[0m[93m555[0m[37m [0m[37mObject.openSync[0m
+[0m  [0m  [0m[90mnode:fs:555:18[0m
+[0m  [0m
+[0m  [0m[90m-[0m [0m[93mnode:fs[0m[90m:[0m[93m439[0m[37m [0m[37mObject.readFileSync[0m
+[0m  [0m  [0m[90mnode:fs:439:35[0m
+[0m  [0m
+[0m  [0m[90m-[0m [0m[93mgatsby-node.js[0m[90m:[0m[93m72[0m[37m [0m[37mexports.onPreInit[0m
+[0m  [0m  [0m[90m[taxes2gofl]/[gatsby-plugin-manifest]/gatsby-node.js:72:78[0m
+[0m  [0m
+[0m  [0m[90m-[0m [0m[93mapi-runner-node.js[0m[90m:[0m[93m436[0m[37m [0m[37mrunAPI[0m
+[0m  [0m  [0m[90m[taxes2gofl]/[gatsby]/dist/utils/api-runner-node.js:436:37[0m
+[0m  [0m
+[0m
+
+[2K[1A[2K[Gsuccess onPreInit - 0.031s
+
+[2K[1A[2K[Gsuccess initialize cache - 0.061s
+
+[2K[1A[2K[Gsuccess copy gatsby files - 0.041s
+
+[2K[1A[2K[Gsuccess Compiling Gatsby Functions - 0.208s
+
+[2K[1A[2K[Gsuccess onPreBootstrap - 0.224s
+
+[2K[1A[2K[Gsuccess createSchemaCustomization - 0.023s
+
+[2K[1A[2K[Gsuccess Checking for changed pages - 0.001s
+
+[2K[1A[2K[Gsuccess source and transform nodes - 0.093s
+
+[2K[1A[2K[Gsuccess building schema - 0.185s
+
+[2K[1A[2K[Gsuccess createPages - 0.004s
+
+[2K[1A[2K[Gsuccess createPagesStatefully - 0.062s
+
+[2K[1A[2K[Ginfo Total nodes: 47, SitePage nodes: 6 (use --verbose for breakdown)
+
+[2K[1A[2K[Gsuccess Checking for changed pages - 0.000s
+
+[2K[1A[2K[Gsuccess write out redirect data - 0.002s
+
+[2K[1A[2K[Gsuccess Build manifest and related icons - 0.001s
+
+[2K[1A[2K[G
+ ERROR #11321  API.NODE.EXECUTION
+
+"gatsby-plugin-manifest" threw an error while running the onPostBootstrap
+lifecycle:
+
+icon (src/images/icon.png) does not exist as defined in gatsby-config.js. Make
+sure the file exists relative to the root of the site.
+
+  196 |     // Check if the icon exists
+  197 |     if (!(0, _nodeHelpers.doesIconExist)(icon)) {
+> 198 |       throw new Error(`icon (${icon}) does not exist as defined in
+gatsby-config.js. Make sure the file exists relative to the root of the site.`);
+      |             ^
+  199 |     }
+  200 |     const sharp = await (0, _safeSharp.default)();
+  201 |     const sharpIcon = sharp(icon);
+
+File: node_modules/gatsby-plugin-manifest/gatsby-node.js:198:13
+
+
+[2K[1A[2K[G
+[0m
+[0m  [0m[97m[41mError[0m[37m[41m:[0m[37m[41m [0m[97m[41micon (src/images/icon.png) does not exist as defined in gatsby-config.j[0m
+  [0m[97m[41ms. Make sure the file exists relative to the root of the site.[0m
+
+
+[2K[1A[2K[Gsuccess onPostBootstrap - 0.031s
+
+[2K[1A[2K[Ginfo bootstrap finished - 4.030s
+
+[2K[1A[2K[Gsuccess onPreExtractQueries - 0.001s
+
+[2K[1A[2K[G
+ ERROR #85911  GRAPHQL.EXTRACTION
+
+There was a problem parsing "/home/aj/Documents/DevStuff/ghl-site-generator/proj
+ects/taxes2gofl/src/pages/404.tsx"; any GraphQL
+fragments or queries in this file were not processed.
+
+This may indicate a syntax error in the code, or it may be a file type
+that Gatsby does not know how to parse.
+
+File: src/pages/404.tsx
+
+
+[2K[1A[2K[G
+ ERROR #85911  GRAPHQL.EXTRACTION
+
+There was a problem parsing "/home/aj/Documents/DevStuff/ghl-site-generator/proj
+ects/taxes2gofl/src/pages/privacy-policy.tsx"; any GraphQL
+fragments or queries in this file were not processed.
+
+This may indicate a syntax error in the code, or it may be a file type
+that Gatsby does not know how to parse.
+
+File: src/pages/privacy-policy.tsx
+
+
+[2K[1A[2K[G
+ ERROR #85911  GRAPHQL.EXTRACTION
+
+There was a problem parsing "/home/aj/Documents/DevStuff/ghl-site-generator/proj
+ects/taxes2gofl/src/pages/terms-and-conditions.tsx"; any GraphQL
+fragments or queries in this file were not processed.
+
+This may indicate a syntax error in the code, or it may be a file type
+that Gatsby does not know how to parse.
+
+File: src/pages/terms-and-conditions.tsx
+
+
+[2K[1A[2K[Gfailed extract queries from components - 1.027s
+
+[2K[1A[2K[Gsuccess write out requires - 0.003s
+
+[2K[1A[2K[G
+ ERROR  UNKNOWN
+
+Module build failed (from ./node_modules/gatsby/dist/utils/babel-loader.js):
+SyntaxError: /home/aj/Documents/DevStuff/ghl-site-generator/projects/taxes2gofl/
+src/pages/privacy-policy.tsx: Unexpected keyword 'else'. (36:12)
+
+  34 |             className="prose prose-invert max-w-none"
+  35 |           >
+> 36 |           {{else}}
+     |             ^
+  37 |           <div className="prose prose-invert max-w-none">
+  38 |
+  39 |             <h1 className="text-4xl font-heading font-bold text-white
+mb-4">
+
+
+
+[2K[1A[2K[G
+[0m
+[0m  [0m[97m[41mModuleBuildError[0m[37m[41m:[0m[37m[41m [0m[97m[41mModule build failed (from ./node_modules/gatsby/dist/utils/b[0m
+  [0m[97m[41mabel-loader.js):[0m
+[0m  [0m[97m[41mSyntaxError: /home/aj/Documents/DevStuff/ghl-site-generator/projects/taxes2gof[0m
+  [0m[97m[41ml/src/pages/privacy-policy.tsx: Unexpected keyword 'else'. (36:12)[0m
+[0m  [0m[97m[41m  34 |             className="prose prose-invert max-w-none"[0m
+[0m  [0m[97m[41m  35 |           >[0m
+[0m  [0m[97m[41m> 36 |           {{else}}[0m
+[0m  [0m[97m[41m     |             ^[0m
+[0m  [0m[97m[41m  37 |           <div className="prose prose-invert max-w-none">[0m
+[0m  [0m[97m[41m  38 |           [0m
+[0m  [0m[97m[41m  39 |             <h1 className="text-4xl font-heading font-bold text-white m[0m
+  [0m[97m[41mb-4">[0m
+[0m  [0m
+[0m  [0m[90m-[0m [0m[93mindex.js[0m[90m:[0m[93m367[0m[37m [0m[37mconstructor[0m
+[0m  [0m  [0m[90m[taxes2gofl]/[@babel]/parser/lib/index.js:367:19[0m
+
+[2K[1A[2K[G
+ ERROR  UNKNOWN
+
+Module build failed (from ./node_modules/gatsby/dist/utils/babel-loader.js):
+SyntaxError: /home/aj/Documents/DevStuff/ghl-site-generator/projects/taxes2gofl/
+src/pages/terms-and-conditions.tsx: Unexpected keyword 'else'. (36:12)
+
+  34 |             className="prose prose-invert max-w-none"
+  35 |           >
+> 36 |           {{else}}
+     |             ^
+  37 |           <div className="prose prose-invert max-w-none">
+  38 |
+  39 |             <h1 className="text-4xl font-heading font-bold text-white
+mb-4">
+
+
+[2K[1A[2K[G
+ ERROR  UNKNOWN
+
+Module build failed (from ./node_modules/gatsby/dist/utils/babel-loader.js):
+SyntaxError: /home/aj/Documents/DevStuff/ghl-site-generator/projects/taxes2gofl/
+src/pages/404.tsx: Unexpected keyword 'else'. (52:12)
+
+  50 |             </Link>
+  51 |           </motion.div>
+> 52 |           {{else}}
+     |             ^
+  53 |           <h1 className="text-8xl md:text-9xl font-heading font-bold
+text-primary-500 mb-4">
+  54 |             404
+  55 |           </h1>
+
+[2K[1A[2K[G
+[0m
+[0m  [0m[97m[41mModuleBuildError[0m[37m[41m:[0m[37m[41m [0m[97m[41mModule build failed (from ./node_modules/gatsby/dist/utils/b[0m
+  [0m[97m[41mabel-loader.js):[0m
+[0m  [0m[97m[41mSyntaxError: /home/aj/Documents/DevStuff/ghl-site-generator/projects/taxes2gof[0m
+  [0m[97m[41ml/src/pages/404.tsx: Unexpected keyword 'else'. (52:12)[0m
+[0m  [0m[97m[41m  50 |             </Link>[0m
+[0m  [0m[97m[41m  51 |           </motion.div>[0m
+[0m  [0m[97m[41m> 52 |           {{else}}[0m
+[0m  [0m[97m[41m     |             ^[0m
+[0m  [0m[97m[41m  53 |           <h1 className="text-8xl md:text-9xl font-heading font-bold te[0m
+  [0m[97m[41mxt-primary-500 mb-4">[0m
+[0m  [0m[97m[41m  54 |             404[0m
+[0m  [0m[97m[41m  55 |           </h1>[0m
+[
+[2K[1A[2K[Gnot finished Building development bundle - 1.242s
+
