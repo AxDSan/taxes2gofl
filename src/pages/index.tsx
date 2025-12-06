@@ -108,32 +108,55 @@ const IndexPage: React.FC<PageProps> = () => {
     },
   ]
 
+  // Helper component to render section with optional background image
+  // Usage: <SectionWrapper bgImage="/path/to/image.jpg" bgOverlay={true}>...</SectionWrapper>
+  // bgImage is optional - if not provided, section uses its default background color
+  // bgOverlay defaults to true - set to false to disable the dark overlay
+  const SectionWrapper: React.FC<{
+    id?: string
+    className?: string
+    bgImage?: string
+    bgOverlay?: boolean
+    children: React.ReactNode
+  }> = ({ id, className = "", bgImage, bgOverlay = true, children }) => {
+    const baseClasses = className.split(" ").filter(c => !c.startsWith("bg-"))
+    const bgClass = className.split(" ").find(c => c.startsWith("bg-")) || ""
+    
+    return (
+      <section
+        id={id}
+        className={`relative ${baseClasses.join(" ")} ${!bgImage ? bgClass : ""} overflow-hidden`}
+      >
+        {bgImage && (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${bgImage})` }}
+            />
+            {bgOverlay && (
+              <div className="absolute inset-0 bg-neutral-black/60" />
+            )}
+          </>
+        )}
+        <div className={bgImage ? "relative z-10" : ""}>
+          {children}
+        </div>
+      </section>
+    )
+  }
+
   return (
     <Layout>
       {/* Hero Section */}
       <Hero />
 
-      {/* About Edwin Section - Corporate Two Column Layout */}
-      <section id="about" className="py-s-10 bg-neutral-white">
+      {/* About Edwin Section - Full Text Display */}
+      {/* Example: To add a background image, use: <SectionWrapper bgImage="/path/to/image.jpg"> */}
+      <SectionWrapper id="about" className="py-s-12 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-s-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-primary-light border border-primary">
-                <span className="text-primary-dark font-body font-semibold text-b-xs uppercase tracking-wide">
-                  {t.about?.experienceBadge || "Más de 23 años de experiencia"}
-                </span>
-              </div>
-              <h2 className="text-h-xl font-heading font-normal text-neutral-dark">
-                {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
-              </h2>
-              <p className="text-b-l text-neutral-medium-dark leading-relaxed font-body">
-                {t.about?.subtitle || ""}
-              </p>
-              <p className="text-b-m text-neutral-medium-dark leading-relaxed font-body">
-                {t.about?.description || ""}
-              </p>
-            </div>
-            <div className="aspect-[4/5] bg-neutral-light overflow-hidden border border-neutral-medium-light">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[600px] lg:min-h-[700px]">
+            {/* Image on Far Left - Takes 4 columns */}
+            <div className="lg:col-span-4 relative bg-neutral-light overflow-hidden order-2 lg:order-1">
               <img
                 src={teamMembers[0].image}
                 alt={teamMembers[0].name}
@@ -142,15 +165,47 @@ const IndexPage: React.FC<PageProps> = () => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
                 }}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover min-h-[400px] lg:min-h-full"
               />
+            </div>
+            
+            {/* Full Text Block on Right - Takes 8 columns */}
+            <div className="lg:col-span-8 bg-neutral-black text-neutral-white p-s-8 lg:p-s-12 flex flex-col justify-center order-1 lg:order-2">
+              <div className="space-y-6 max-w-4xl">
+                <div className="inline-block px-4 py-2 bg-primary border border-primary">
+                  <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
+                    {t.about?.experienceBadge || "Más de 23 años de experiencia"}
+                  </span>
+                </div>
+                
+                <h2 className="text-h-xl lg:text-display-3 font-heading font-normal text-neutral-white leading-tight">
+                  {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
+                </h2>
+                
+                <p className="text-b-m text-neutral-white/90 leading-relaxed font-body">
+                  {t.about?.subtitle || ""}
+                </p>
+                
+                <p className="text-b-s text-neutral-white/80 leading-relaxed font-body">
+                  {t.about?.description || ""}
+                </p>
+                
+                <div className="pt-s-2">
+                  <a
+                    href="#contact"
+                    className="inline-block px-8 py-3 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-s uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
+                  >
+                    {t.hero?.cta || "Contáctanos Hoy"}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Certifications Section */}
-      <section className="py-s-8 bg-neutral-light border-y border-neutral-medium-light">
+      <SectionWrapper className="py-s-8 bg-neutral-light border-y border-neutral-medium-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {certifications.map((cert) => (
@@ -172,10 +227,10 @@ const IndexPage: React.FC<PageProps> = () => {
             ))}
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Team Members Section */}
-      <section id="team" className="py-s-10 bg-neutral-white">
+      <SectionWrapper id="team" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
             {t.team?.title || "Nuestro Equipo"}
@@ -208,10 +263,10 @@ const IndexPage: React.FC<PageProps> = () => {
             ))}
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Services Section */}
-      <section id="services" className="py-s-10 bg-neutral-white">
+      <SectionWrapper id="services" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <h2 className="text-h-xl font-heading font-normal text-center text-neutral-dark mb-s-4">
             {(t.services as any)?.title || "Servicios"}
@@ -281,10 +336,10 @@ const IndexPage: React.FC<PageProps> = () => {
             ))}
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Specialized Services Section */}
-      <section id="specialized-services" className="py-s-10 bg-neutral-light">
+      <SectionWrapper id="specialized-services" className="py-s-10 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <h2 className="text-h-xl font-heading font-normal text-center text-neutral-dark mb-s-4">
             {(t.services as any)?.specializedTitle || "Otros Servicios Especializados"}
@@ -330,10 +385,10 @@ const IndexPage: React.FC<PageProps> = () => {
             ))}
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Video Section - Edwin's Message */}
-      <section className="py-s-10 bg-neutral-white">
+      <SectionWrapper className="py-s-10 bg-neutral-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-20">
           <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
             {t.video?.title || "Mensaje de Edwin"}
@@ -348,10 +403,10 @@ const IndexPage: React.FC<PageProps> = () => {
             />
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Contact Section */}
-      <section id="contact" className="py-s-10 bg-primary">
+      <SectionWrapper id="contact" className="py-s-10 bg-primary">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-s-12">
             <div className="text-neutral-white">
@@ -395,7 +450,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
     </Layout>
   )
 }
