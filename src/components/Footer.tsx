@@ -60,7 +60,8 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
   return (
     <footer className="bg-neutral-black text-neutral-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 py-s-10">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-s-8 mb-s-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-s-8 mb-s-8">
+          {/* Logo and Tagline */}
           <div>
             <div className="mb-s-4">
               <img
@@ -89,6 +90,7 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
             <h4 className="text-neutral-white font-body font-semibold mb-s-3 text-b-s uppercase tracking-wide">{t.footer.contact}</h4>
             <ul className="space-y-1 text-neutral-white/60 text-b-xs font-body">
@@ -100,6 +102,7 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
             </ul>
           </div>
 
+          {/* Services */}
           <div>
             <h5 className="text-neutral-white font-body font-semibold mb-s-3 text-b-s uppercase tracking-wide">{t.services?.title || "Servicios"}</h5>
             <ul className="space-y-1">
@@ -112,12 +115,13 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
             </ul>
           </div>
 
+          {/* Specialized Services */}
           <div>
             <h5 className="text-neutral-white font-body font-semibold mb-s-3 text-b-s uppercase tracking-wide">{t.services?.specializedTitle || "Otros Servicios Especializados"}</h5>
             <ul className="space-y-1">
-              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body">{t.services?.planificacion?.title || "Planificación Contributiva"}</a></li>
-              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body">{t.services?.estructura?.title || "Estructura de Negocio"}</a></li>
-              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body">{t.services?.estrategias?.title || "Estrategias Contributivas"}</a></li>
+              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body leading-relaxed">{t.services?.planificacion?.title || "Planificación Contributiva"}</a></li>
+              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body leading-relaxed">{t.services?.estructura?.title || "Estructura de Negocio"}</a></li>
+              <li><a href="#specialized-services" className="text-neutral-white/60 hover:text-secondary transition-colors text-b-xs font-body leading-relaxed">{t.services?.estrategias?.title || "Estrategias Contributivas"}</a></li>
             </ul>
           </div>
         </div>
