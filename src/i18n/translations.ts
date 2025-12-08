@@ -446,7 +446,7 @@ export const translations = {
     about: {
       title: "About Edwin Venezuela, EA, MSCTA",
       subtitle: "We are a tax and financial planning firm led by Edwin Venezuela, Enrolled Agent (IRS Enrolled Agent) and Certified Tax Advisor, with over 23 years of experience in the U.S. tax system.",
-      description: "From our office in Orlando, Florida, we have a highly trained team committed to offering professional, confidential, and accessible service to both individuals and businesses of all sizes.",
+      description: "From our office in Orlando, Florida, we have a highly trained team committed to offering professional, confidential, and accessible service to both individuals and businesses of all sizes. We specialize in individual tax returns, business tax returns, corporate tax returns, and pass-through entities (S-Corporations, LLCs, Partnerships), as well as handling federal and state tax returns. We serve small business owners, self-employed professionals, investors, and corporations seeking solid tax planning and full compliance with the IRS and state authorities. We combine technical knowledge, practical experience, and attention to detail to help you maximize your tax benefits, reduce risks, and support the orderly growth of your business and wealth. Our goal is to provide you with clarity, strategic guidance, and continuous support, so you can make informed decisions and have peace of mind that your tax obligations are in the hands of an expert team.",
       experienceBadge: "Over 23 years of experience",
     },
     team: {
