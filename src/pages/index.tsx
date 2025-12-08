@@ -6,13 +6,11 @@ import Hero from "../components/Hero"
 import ContactForm from "../components/ContactForm"
 import { useI18n } from "../i18n"
 import { 
-  FadeIn, 
-  StaggerContainer, 
-  StaggerItem, 
-  ScaleIn, 
-  RotateIn,
-  SlideInFromSide,
-  RevealText
+  ScrollFadeIn, 
+  ScrollStaggerContainer, 
+  ScrollScaleIn, 
+  ScrollRotateIn,
+  ScrollSlideIn,
 } from "../components/Motion"
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -162,10 +160,10 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* About Edwin Section */}
       <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-8 bg-neutral-light">
         <div className="max-w-[1800px] mx-auto px-4 lg:px-8">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.15}>
+          <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.15} variant="scale">
             {/* Column 1: Image */}
-            <StaggerItem variant="scale">
-              <ScaleIn className="relative bg-neutral-light overflow-hidden rounded-lg aspect-[4/5] md:aspect-auto">
+            <div className="relative bg-neutral-light overflow-hidden rounded-lg aspect-[4/5] md:aspect-auto">
+              <ScrollScaleIn>
                 <img
                   src={teamMembers[0].image}
                   alt={teamMembers[0].name}
@@ -176,62 +174,48 @@ const IndexPage: React.FC<PageProps> = () => {
                   }}
                   className="w-full h-full object-cover"
                 />
-              </ScaleIn>
-            </StaggerItem>
+              </ScrollScaleIn>
+            </div>
             
             {/* Column 2: Title and Subtitle */}
-            <StaggerItem variant="slide">
-              <SlideInFromSide side="left" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
-                <FadeIn delay={0.1}>
-                  <div className="inline-block px-3 py-1.5 bg-primary border border-primary w-fit">
-                    <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
-                      {t.about?.experienceBadge || "Más de 23 años de experiencia"}
-                    </span>
-                  </div>
-                </FadeIn>
-                
-                <RevealText delay={0.2}>
-                  <h2 className="text-h-l lg:text-h-xl font-heading font-normal text-neutral-white leading-tight">
-                    {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
-                  </h2>
-                </RevealText>
-                
-                <FadeIn delay={0.3}>
-                  <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
-                    {t.about?.subtitle || ""}
-                  </p>
-                </FadeIn>
-              </SlideInFromSide>
-            </StaggerItem>
+            <ScrollSlideIn side="left" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+              <div className="inline-block px-3 py-1.5 bg-primary border border-primary w-fit">
+                <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
+                  {t.about?.experienceBadge || "Más de 23 años de experiencia"}
+                </span>
+              </div>
+              
+              <h2 className="text-h-l lg:text-h-xl font-heading font-normal text-neutral-white leading-tight">
+                {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
+              </h2>
+              
+              <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
+                {t.about?.subtitle || ""}
+              </p>
+            </ScrollSlideIn>
             
             {/* Column 3: Description and CTA */}
-            <StaggerItem variant="slide">
-              <SlideInFromSide side="right" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
-                <FadeIn delay={0.1}>
-                  <p className="text-b-xs text-neutral-white/80 leading-relaxed font-body">
-                    {t.about?.description || ""}
-                  </p>
-                </FadeIn>
-                
-                <FadeIn delay={0.2}>
-                  <div className="pt-2">
-                    <a
-                      href="#contact"
-                      className="inline-block px-6 py-2.5 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
-                    >
-                      {t.hero?.cta || "Contáctanos Hoy"}
-                    </a>
-                  </div>
-                </FadeIn>
-              </SlideInFromSide>
-            </StaggerItem>
-          </StaggerContainer>
+            <ScrollSlideIn side="right" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+              <p className="text-b-xs text-neutral-white/80 leading-relaxed font-body">
+                {t.about?.description || ""}
+              </p>
+              
+              <div className="pt-2">
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2.5 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
+                >
+                  {t.hero?.cta || "Contáctanos Hoy"}
+                </a>
+              </div>
+            </ScrollSlideIn>
+          </ScrollStaggerContainer>
         </div>
       </SectionWrapper>
 
       {/* Certifications Section */}
       <SectionWrapper className="py-s-8 bg-neutral-light border-y border-neutral-medium-light overflow-hidden">
-        <FadeIn direction="up" delay={0.1}>
+        <ScrollFadeIn direction="up">
           <div className="w-full">
             <div className="flex items-center gap-32 animate-marquee px-4">
               {[...certifications, ...certifications, ...certifications, ...certifications].map((cert, index) => (
@@ -253,20 +237,18 @@ const IndexPage: React.FC<PageProps> = () => {
               ))}
             </div>
           </div>
-        </FadeIn>
+        </ScrollFadeIn>
       </SectionWrapper>
 
       {/* Video Section */}
       <SectionWrapper className="py-s-10 bg-green-600"> 
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <FadeIn direction="down" delay={0.1}>
-            <RevealText>
-              <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
-                {t.video?.title || "Know More About Taxes 2 Go"}
-              </h2>
-            </RevealText>
-          </FadeIn>
-          <ScaleIn delay={0.3} scale={0.9}>
+          <ScrollFadeIn direction="down">
+            <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
+              {t.video?.title || "Know More About Taxes 2 Go"}
+            </h2>
+          </ScrollFadeIn>
+          <ScrollScaleIn scale={0.9}>
             <div className="aspect-video overflow-hidden border-2 border-neutral-medium-light">
               <iframe
                 className="w-full h-full"
@@ -276,7 +258,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 allowFullScreen
               />
             </div>
-          </ScaleIn>
+          </ScrollScaleIn>
         </div>
       </SectionWrapper>
 
@@ -284,67 +266,61 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* Team Members Section */}
       <SectionWrapper bgImage="/team-bg.jpg" bgOverlay={true} id="team" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <FadeIn direction="down" delay={0.1}>
-            <RevealText>
-              <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
-                {t.team?.title || "Nuestro Equipo"}
-              </h2>
-            </RevealText>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-s-12 mt-s-8 max-w-4xl mx-auto" staggerDelay={0.2}>
-            {teamMembers.map((member, index) => (
-              <StaggerItem key={member.name} variant="scale">
-                <div className="text-center">
-                  <RotateIn delay={index * 0.1} angle={-5}>
-                    <div className="relative w-64 h-64 mx-auto mb-s-6 overflow-hidden bg-neutral-light border-2 border-neutral-medium-light">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-neutral-medium">
-                          <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-                  </RotateIn>
-                  <FadeIn delay={0.2 + index * 0.1}>
-                    <h3 className="text-h-l font-heading font-normal text-neutral-white mb-2">
-                      {member.name}
-                    </h3>
-                  </FadeIn>
-                  <FadeIn delay={0.3 + index * 0.1}>
-                    <p className="text-b-l text-neutral-white font-body font-semibold">
-                      {member.title}
-                    </p>
-                  </FadeIn>
-                </div>
-              </StaggerItem>
+          <ScrollFadeIn direction="down">
+            <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
+              {t.team?.title || "Nuestro Equipo"}
+            </h2>
+          </ScrollFadeIn>
+          <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-s-12 mt-s-8 max-w-4xl mx-auto" staggerDelay={0.2} variant="scale">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="text-center">
+                <ScrollRotateIn angle={-5}>
+                  <div className="relative w-64 h-64 mx-auto mb-s-6 overflow-hidden bg-neutral-light border-2 border-neutral-medium-light">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-neutral-medium">
+                        <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </ScrollRotateIn>
+                <ScrollFadeIn>
+                  <h3 className="text-h-l font-heading font-normal text-neutral-white mb-2">
+                    {member.name}
+                  </h3>
+                </ScrollFadeIn>
+                <ScrollFadeIn>
+                  <p className="text-b-l text-neutral-white font-body font-semibold">
+                    {member.title}
+                  </p>
+                </ScrollFadeIn>
+              </div>
             ))}
-          </StaggerContainer>
+          </ScrollStaggerContainer>
         </div>
       </SectionWrapper>
 
       {/* Services Section */}
       <SectionWrapper id="services" className="py-s-10 bg-green-600">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <FadeIn direction="down" delay={0.1}>
-            <RevealText>
-              <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-white mb-s-4">
-                {(t.services as any)?.title || "Servicios"}
-              </h2>
-            </RevealText>
-          </FadeIn>
-          <FadeIn delay={0.2}>
+          <ScrollFadeIn direction="down">
+            <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-white mb-s-4">
+              {(t.services as any)?.title || "Servicios"}
+            </h2>
+          </ScrollFadeIn>
+          <ScrollFadeIn>
             <p className="text-b-l text-center text-neutral-white/90 mb-s-8 max-w-3xl mx-auto font-body">
               {(t.services as any)?.subtitle || "Soluciones fiscales completas para individuos y negocios"}
             </p>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-s-6" staggerDelay={0.1}>
+          </ScrollFadeIn>
+          <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-s-6" staggerDelay={0.1} variant="scale">
             {[
               { 
                 title: (t.services as any)?.mainServices?.individualFederal || "Individual Federal Tax Return", 
@@ -377,87 +353,81 @@ const IndexPage: React.FC<PageProps> = () => {
                 icon: <TaxAdvisingIcon />,
               },
             ].map((service) => (
-              <StaggerItem key={service.title} variant="scale">
-                <div className="relative min-h-72 overflow-hidden rounded-sm group cursor-pointer">
-                  {/* Background Image with Blur */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center filter blur-sm scale-110 transition-transform duration-500 group-hover:scale-100"
-                    style={{ backgroundImage: `url(${service.image})` }}
-                  />
-                  
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-neutral-black/70 group-hover:bg-neutral-black/80 transition-colors duration-300" />
-                  
-                  {/* Content */}
-                  <div className="relative min-h-full flex flex-col justify-between p-s-6">
-                    {/* Red Icon Container */}
-                    <div className="w-12 h-12 bg-primary flex items-center justify-center mb-s-5 flex-shrink-0 rounded-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                      <div className="text-neutral-white">{service.icon}</div>
-                    </div>
-                    
-                    {/* Title */}
-                    <h3 className="text-h-m font-heading font-normal text-neutral-white leading-tight transition-transform duration-300 group-hover:translate-y-[-2px]">
-                      {service.title}
-                    </h3>
+              <div key={service.title} className="relative min-h-72 overflow-hidden rounded-sm group cursor-pointer">
+                {/* Background Image with Blur */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center filter blur-sm scale-110 transition-transform duration-500 group-hover:scale-100"
+                  style={{ backgroundImage: `url(${service.image})` }}
+                />
+                
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-neutral-black/70 group-hover:bg-neutral-black/80 transition-colors duration-300" />
+                
+                {/* Content */}
+                <div className="relative min-h-full flex flex-col justify-between p-s-6">
+                  {/* Red Icon Container */}
+                  <div className="w-12 h-12 bg-primary flex items-center justify-center mb-s-5 flex-shrink-0 rounded-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <div className="text-neutral-white">{service.icon}</div>
                   </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-h-m font-heading font-normal text-neutral-white leading-tight transition-transform duration-300 group-hover:translate-y-[-2px]">
+                    {service.title}
+                  </h3>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </ScrollStaggerContainer>
         </div>
       </SectionWrapper>
 
       {/* Specialized Services Section */}
       <SectionWrapper id="specialized-services" className="py-s-10 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <FadeIn direction="down" delay={0.1}>
-            <RevealText>
-              <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-dark mb-s-4">
-                {(t.services as any)?.specializedTitle || "Otros Servicios Especializados"}
-              </h2>
-            </RevealText>
-          </FadeIn>
-          <FadeIn delay={0.2}>
+          <ScrollFadeIn direction="down">
+            <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-dark mb-s-4">
+              {(t.services as any)?.specializedTitle || "Otros Servicios Especializados"}
+            </h2>
+          </ScrollFadeIn>
+          <ScrollFadeIn>
             <p className="text-b-l text-center text-neutral-medium-dark mb-s-6 max-w-3xl mx-auto font-body">
               {(t.services as any)?.specializedSubtitle || "Servicios especializados para individuos y empresas"}
             </p>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-s-6" staggerDelay={0.15}>
+          </ScrollFadeIn>
+          <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-s-6" staggerDelay={0.15} variant="rotate">
             {specializedServices.map((service) => (
-              <StaggerItem key={service.title} variant="rotate">
-                <div className="relative min-h-80 overflow-hidden rounded-sm group cursor-pointer">
-                  {/* Background Image with Blur */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center filter blur-sm scale-110 transition-transform duration-500 group-hover:scale-100"
-                    style={{ backgroundImage: `url(${service.image})` }}
-                  />
+              <div key={service.title} className="relative min-h-80 overflow-hidden rounded-sm group cursor-pointer">
+                {/* Background Image with Blur */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center filter blur-sm scale-110 transition-transform duration-500 group-hover:scale-100"
+                  style={{ backgroundImage: `url(${service.image})` }}
+                />
+                
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-neutral-black/70 group-hover:bg-neutral-black/80 transition-colors duration-300" />
+                
+                {/* Content */}
+                <div className="relative min-h-full flex flex-col justify-between p-s-6">
+                  {/* Red Icon Container */}
+                  <div className="w-12 h-12 bg-primary flex items-center justify-center mb-s-5 flex-shrink-0 rounded-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <div className="text-neutral-white">{service.icon}</div>
+                  </div>
                   
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-neutral-black/70 group-hover:bg-neutral-black/80 transition-colors duration-300" />
-                  
-                  {/* Content */}
-                  <div className="relative min-h-full flex flex-col justify-between p-s-6">
-                    {/* Red Icon Container */}
-                    <div className="w-12 h-12 bg-primary flex items-center justify-center mb-s-5 flex-shrink-0 rounded-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      <div className="text-neutral-white">{service.icon}</div>
-                    </div>
+                  <div className="flex-grow flex flex-col justify-end">
+                    {/* Title */}
+                    <h3 className="text-h-s font-heading font-normal text-neutral-white mb-s-3 leading-tight transition-transform duration-300 group-hover:translate-y-[-2px]">
+                      {service.title}
+                    </h3>
                     
-                    <div className="flex-grow flex flex-col justify-end">
-                      {/* Title */}
-                      <h3 className="text-h-s font-heading font-normal text-neutral-white mb-s-3 leading-tight transition-transform duration-300 group-hover:translate-y-[-2px]">
-                        {service.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-b-xs text-neutral-white/90 leading-relaxed font-body">
-                        {service.description}
-                      </p>
-                    </div>
+                    {/* Description */}
+                    <p className="text-b-xs text-neutral-white/90 leading-relaxed font-body">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </ScrollStaggerContainer>
         </div>
       </SectionWrapper>
 
@@ -465,61 +435,53 @@ const IndexPage: React.FC<PageProps> = () => {
       <SectionWrapper id="contact" className="py-s-10 bg-primary">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-s-12">
-            <SlideInFromSide side="left">
+            <ScrollSlideIn side="left">
               <div className="text-neutral-white">
-                <FadeIn delay={0.1}>
-                  <RevealText>
-                    <h2 className="text-display-3 font-heading font-normal mb-s-6">
-                      {t.contact?.title || "Contáctanos Hoy"}
-                    </h2>
-                  </RevealText>
-                </FadeIn>
-                <StaggerContainer className="space-y-6 mb-s-8" staggerDelay={0.1}>
-                  <StaggerItem variant="fade">
-                    <div className="flex items-start gap-4">
-                      <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <div>
-                        <p className="font-body font-semibold text-b-m">{t.contact?.address || "Dirección"}</p>
-                        <p className="font-body text-b-m">5769 Curry Ford Road</p>
-                        <p className="font-body text-b-m">Orlando, FL 32822</p>
-                      </div>
+                <ScrollFadeIn>
+                  <h2 className="text-display-3 font-heading font-normal mb-s-6">
+                    {t.contact?.title || "Contáctanos Hoy"}
+                  </h2>
+                </ScrollFadeIn>
+                <ScrollStaggerContainer className="space-y-6 mb-s-8" staggerDelay={0.1} variant="fade">
+                  <div className="flex items-start gap-4">
+                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-body font-semibold text-b-m">{t.contact?.address || "Dirección"}</p>
+                      <p className="font-body text-b-m">5769 Curry Ford Road</p>
+                      <p className="font-body text-b-m">Orlando, FL 32822</p>
                     </div>
-                  </StaggerItem>
-                  <StaggerItem variant="fade">
-                    <div className="flex items-start gap-4">
-                      <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <div>
-                        <p className="font-body font-semibold text-b-m">{t.contact?.phone || "Teléfono / WhatsApp"}</p>
-                        <p className="font-body text-b-m">407-719-9599</p>
-                      </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <div>
+                      <p className="font-body font-semibold text-b-m">{t.contact?.phone || "Teléfono / WhatsApp"}</p>
+                      <p className="font-body text-b-m">407-719-9599</p>
                     </div>
-                  </StaggerItem>
-                  <StaggerItem variant="fade">
-                    <div className="flex items-start gap-4">
-                      <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <div>
-                        <p className="font-body font-semibold text-b-m">{t.contact?.email || "Email"}</p>
-                        <p className="font-body text-b-m">info@taxes2gofl.com</p>
-                      </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <div>
+                      <p className="font-body font-semibold text-b-m">{t.contact?.email || "Email"}</p>
+                      <p className="font-body text-b-m">info@taxes2gofl.com</p>
                     </div>
-                  </StaggerItem>
-                </StaggerContainer>
+                  </div>
+                </ScrollStaggerContainer>
               </div>
-            </SlideInFromSide>
-            <SlideInFromSide side="right">
-              <ScaleIn delay={0.2}>
+            </ScrollSlideIn>
+            <ScrollSlideIn side="right">
+              <ScrollScaleIn>
                 <div className="bg-neutral-white border border-neutral-medium-light p-s-8">
                   <ContactForm />
                 </div>
-              </ScaleIn>
-            </SlideInFromSide>
+              </ScrollScaleIn>
+            </ScrollSlideIn>
           </div>
         </div>
       </SectionWrapper>
