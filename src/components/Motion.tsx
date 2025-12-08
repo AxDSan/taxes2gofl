@@ -1,5 +1,5 @@
 import * as React from "react"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 
 interface FadeInProps {
   children: React.ReactNode
@@ -7,6 +7,7 @@ interface FadeInProps {
   delay?: number
   duration?: number
   className?: string
+  distance?: number
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({
@@ -15,15 +16,16 @@ export const FadeIn: React.FC<FadeInProps> = ({
   delay = 0,
   duration = 0.6,
   className = "",
+  distance = 40,
 }) => {
   const ref = React.useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { x: distance, y: 0 },
+    right: { x: -distance, y: 0 },
   }
 
   return (
@@ -31,7 +33,7 @@ export const FadeIn: React.FC<FadeInProps> = ({
       ref={ref}
       initial={{ opacity: 0, ...directions[direction] }}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
-      transition={{ duration, delay, ease: "easeOut" }}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -76,20 +78,56 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({
 interface StaggerItemProps {
   children: React.ReactNode
   className?: string
+  variant?: "fade" | "slide" | "scale" | "rotate"
 }
 
-export const StaggerItem: React.FC<StaggerItemProps> = ({ children, className = "" }) => {
+export const StaggerItem: React.FC<StaggerItemProps> = ({ 
+  children, 
+  className = "",
+  variant = "fade"
+}) => {
+  const variants = {
+    fade: {
+      hidden: { opacity: 0, y: 30, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      },
+    },
+    slide: {
+      hidden: { opacity: 0, x: -50, y: 20 },
+      visible: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      },
+    },
+    scale: {
+      hidden: { opacity: 0, scale: 0.8, y: 20 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+      },
+    },
+    rotate: {
+      hidden: { opacity: 0, rotate: -5, scale: 0.9 },
+      visible: {
+        opacity: 1,
+        rotate: 0,
+        scale: 1,
+        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      },
+    },
+  }
+
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: { duration: 0.5, ease: "easeOut" },
-        },
-      }}
+      variants={variants[variant]}
       className={className}
     >
       {children}
@@ -101,18 +139,83 @@ interface ScaleInProps {
   children: React.ReactNode
   delay?: number
   className?: string
+  scale?: number
 }
 
-export const ScaleIn: React.FC<ScaleInProps> = ({ children, delay = 0, className = "" }) => {
+export const ScaleIn: React.FC<ScaleInProps> = ({ 
+  children, 
+  delay = 0, 
+  className = "",
+  scale = 0.8
+}) => {
   const ref = React.useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      initial={{ opacity: 0, scale, y: 20 }}
+      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+interface RotateInProps {
+  children: React.ReactNode
+  delay?: number
+  className?: string
+  angle?: number
+}
+
+export const RotateIn: React.FC<RotateInProps> = ({ 
+  children, 
+  delay = 0, 
+  className = "",
+  angle = -10
+}) => {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, rotate: angle, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, rotate: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+interface ParallaxProps {
+  children: React.ReactNode
+  speed?: number
+  className?: string
+}
+
+export const Parallax: React.FC<ParallaxProps> = ({ 
+  children, 
+  speed = 0.5,
+  className = "" 
+}) => {
+  const ref = React.useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, speed * 100])
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y }}
       className={className}
     >
       {children}
@@ -173,6 +276,94 @@ export const CountUp: React.FC<CountUpProps> = ({
     <span ref={ref} className={className}>
       {prefix}{count}{suffix}
     </span>
+  )
+}
+
+interface SlideInFromSideProps {
+  children: React.ReactNode
+  side?: "left" | "right"
+  delay?: number
+  className?: string
+}
+
+export const SlideInFromSide: React.FC<SlideInFromSideProps> = ({
+  children,
+  side = "left",
+  delay = 0,
+  className = "",
+}) => {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ 
+        opacity: 0, 
+        x: side === "left" ? -100 : 100,
+        scale: 0.95
+      }}
+      animate={isInView ? { 
+        opacity: 1, 
+        x: 0,
+        scale: 1
+      } : {}}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+interface RevealTextProps {
+  children: React.ReactNode
+  delay?: number
+  className?: string
+}
+
+export const RevealText: React.FC<RevealTextProps> = ({
+  children,
+  delay = 0,
+  className = "",
+}) => {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            delay,
+            staggerChildren: 0.05,
+          },
+        },
+      }}
+      className={className}
+    >
+      {typeof children === "string" ? (
+        children.split(" ").map((word, i) => (
+          <motion.span
+            key={i}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="inline-block mr-1"
+          >
+            {word}
+          </motion.span>
+        ))
+      ) : (
+        children
+      )}
+    </motion.div>
   )
 }
 
