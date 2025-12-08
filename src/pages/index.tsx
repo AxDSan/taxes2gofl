@@ -148,7 +148,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <Hero videoSrc="/hero.mp4" />
+      <Hero videoSrc="/taxes2go.mp4" />
 
       {/* About Edwin Section */}
       <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-8 bg-neutral-light">
