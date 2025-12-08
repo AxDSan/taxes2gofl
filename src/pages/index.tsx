@@ -158,7 +158,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Hero videoSrc="/taxes2go.mp4" />
 
       {/* About Edwin Section */}
-      <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-8 bg-neutral-light">
+      <SectionWrapper id="about" className="py-s-8 bg-neutral-dark text-neutral-white">
         <div className="max-w-[1800px] mx-auto px-4 lg:px-8">
           <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.15} variant="scale">
             {/* Column 1: Image */}
@@ -178,7 +178,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
             
             {/* Column 2: Title and Subtitle */}
-            <ScrollSlideIn side="left" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+            <ScrollSlideIn side="left" className="bg-neutral-black p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
               <div className="inline-block px-3 py-1.5 bg-primary border border-primary w-fit">
                 <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
                   {t.about?.experienceBadge || "Más de 23 años de experiencia"}
@@ -189,14 +189,14 @@ const IndexPage: React.FC<PageProps> = () => {
                 {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
               </h2>
               
-              <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
+              <p className="text-b-s text-neutral-white/95 leading-relaxed font-body">
                 {t.about?.subtitle || ""}
               </p>
             </ScrollSlideIn>
             
             {/* Column 3: Description and CTA */}
-            <ScrollSlideIn side="right" className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
-              <p className="text-b-xs text-neutral-white/80 leading-relaxed font-body">
+            <ScrollSlideIn side="right" className="bg-neutral-black p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+              <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
                 {t.about?.description || ""}
               </p>
               
