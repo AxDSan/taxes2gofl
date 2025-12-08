@@ -7,7 +7,7 @@ export const translations = {
       about: "Sobre Nosotros",
       team: "Nuestro Equipo",
       services: "Nuestros Servicios",
-      taxes: "Do-my-Taxes",
+      taxes: "Llename los Taxes",
       portal: "Portal Seguro",
       contact: "Contáctanos",
       followUs: "¡Síguenos!",
@@ -25,7 +25,7 @@ export const translations = {
       email: "Email",
     },
     video: {
-      title: "Mensaje de Edwin",
+      title: "Conoce más sobre Taxes 2 Go",
     },
     about: {
       title: "About Edwin Venezuela, EA, MSCTA",
@@ -34,7 +34,7 @@ export const translations = {
       experienceBadge: "Más de 23 años de experiencia",
     },
     team: {
-      title: "Nuestro Equipo",
+      title: "Conoce al Equipo",
       edwin: {
         name: "Edwin Venezuela",
         title: "CEO, EA, MSCTA",
@@ -186,7 +186,7 @@ export const translations = {
       about: "About Us",
       team: "Our Team",
       services: "Our Services",
-      taxes: "File my TAXES",
+      taxes: "File my Taxes",
       portal: "Secure Portal",
       contact: "Contact Us",
       followUs: "Follow Us!",
@@ -304,7 +304,7 @@ export const translations = {
       email: "Email",
     },
     video: {
-      title: "Edwin's Message",
+      title: "Know More About Taxes 2 Go",
     },
     about: {
       title: "About Edwin Venezuela, EA, MSCTA",
@@ -313,7 +313,7 @@ export const translations = {
       experienceBadge: "Over 23 years of experience",
     },
     team: {
-      title: "Our Team",
+      title: "Meet The Team",
       edwin: {
         name: "Edwin Venezuela",
         title: "CEO, EA, MSCTA",

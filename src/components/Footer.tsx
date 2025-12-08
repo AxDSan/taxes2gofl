@@ -49,8 +49,11 @@ const socialIcons: Record<SocialLink["platform"], React.ReactNode> = {
 }
 
 const defaultSocialLinks: SocialLink[] = [
-  { platform: "facebook", href: "https://www.facebook.com/VisionAccountingRincon" },
-  { platform: "instagram", href: "https://www.instagram.com/vision_accounting_group/" },
+  { platform: "facebook", href: "https://www.facebook.com/Taxes2go" },
+  { platform: "instagram", href: "https://www.instagram.com/taxes.2.go.orlando/" },
+  { platform: "youtube", href: "https://www.youtube.com/@taxes2go257" },
+  { platform: "tiktok", href: "https://www.tiktok.com/@taxes2go" },
+  { platform: "linkedin", href: "https://www.linkedin.com/in/taxes2go/" },
   { platform: "whatsapp", href: "https://wa.me/4077199599" },
 ]
 

@@ -229,6 +229,25 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
       </SectionWrapper>
 
+      {/* Video Section - Edwin's Message */}
+      <SectionWrapper className="py-s-10 bg-neutral-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-20">
+          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
+            {t.video?.title || "Know More About Taxes 2 Go"}
+          </h2>
+          <div className="aspect-video overflow-hidden border-2 border-neutral-medium-light">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/p-kasvTzniE"
+              title="Know More About Taxes 2 Go"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </SectionWrapper>
+
+
       {/* Team Members Section */}
       <SectionWrapper bgImage="/team-bg.jpg" bgOverlay={true} id="team" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
@@ -371,36 +390,18 @@ const IndexPage: React.FC<PageProps> = () => {
                   
                   <div className="flex-grow flex flex-col justify-end">
                     {/* Title */}
-                    <h3 className="text-h-m font-heading font-normal text-neutral-white mb-s-3 leading-tight">
+                    <h3 className="text-h-s font-heading font-normal text-neutral-white mb-s-3 leading-tight">
                       {service.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
+                    <p className="text-b-xs text-neutral-white/90 leading-relaxed font-body">
                       {service.description}
                     </p>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Video Section - Edwin's Message */}
-      <SectionWrapper className="py-s-10 bg-neutral-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-20">
-          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
-            {t.video?.title || "Mensaje de Edwin"}
-          </h2>
-          <div className="aspect-video overflow-hidden border-2 border-neutral-medium-light">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-              title="Mensaje de Edwin Venezuela"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
           </div>
         </div>
       </SectionWrapper>
