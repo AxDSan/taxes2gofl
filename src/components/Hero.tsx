@@ -40,21 +40,22 @@ const Hero: React.FC<HeroProps> = ({
         {logoSrc ? (
           <motion.img
             src={logoSrc}
-            alt="Taxes 2 Go"
+            alt={t.hero?.title || "Taxes 2 Go"}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             className="h-32 md:h-40 lg:h-48 w-auto mx-auto mb-8"
           />
         ) : (
-          <motion.h1
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-display-2 font-heading font-normal text-neutral-white mb-6"
           >
-            Taxes 2 Go
-          </motion.h1>
+              <span className="text-red-500 font-bold [text-shadow:_0_2px_8px_rgba(0,0,0,0.5)]">Taxes 2 </span>
+              <span className="text-green-600 font-bold [text-shadow:_0_2px_8px_rgba(0,0,0,0.5)]">Go</span>
+          </motion.span>
         )}
 
         <motion.p

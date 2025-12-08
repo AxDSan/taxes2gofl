@@ -150,13 +150,12 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* Hero Section */}
       <Hero videoSrc="/hero.mp4" />
 
-      {/* About Edwin Section - Full Text Display */}
-      {/* Example: To add a background image, use: <SectionWrapper bgImage="/path/to/image.jpg"> */}
-      <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-12 bg-neutral-light">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[600px] lg:min-h-[700px]">
-            {/* Image on Far Left - Takes 4 columns */}
-            <div className="lg:col-span-4 relative bg-neutral-light overflow-hidden order-2 lg:order-1">
+      {/* About Edwin Section */}
+      <SectionWrapper bgImage="/about-bg.png" bgOverlay={true} id="about" className="py-s-8 bg-neutral-light">
+        <div className="max-w-[1800px] mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Column 1: Image */}
+            <div className="relative bg-neutral-light overflow-hidden rounded-lg aspect-[4/5] md:aspect-auto">
               <img
                 src={teamMembers[0].image}
                 alt={teamMembers[0].name}
@@ -165,39 +164,40 @@ const IndexPage: React.FC<PageProps> = () => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
                 }}
-                className="w-full h-full object-cover min-h-[400px] lg:min-h-full"
+                className="w-full h-full object-cover"
               />
             </div>
             
-            {/* Full Text Block on Right - Takes 8 columns */}
-            <div className="lg:col-span-8 bg-neutral-black text-neutral-white p-s-8 lg:p-s-12 flex flex-col justify-center order-1 lg:order-2">
-              <div className="space-y-6 max-w-4xl">
-                <div className="inline-block px-4 py-2 bg-primary border border-primary">
-                  <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
-                    {t.about?.experienceBadge || "Más de 23 años de experiencia"}
-                  </span>
-                </div>
-                
-                <h2 className="text-h-xl lg:text-display-3 font-heading font-normal text-neutral-white leading-tight">
-                  {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
-                </h2>
-                
-                <p className="text-b-m text-neutral-white/90 leading-relaxed font-body">
-                  {t.about?.subtitle || ""}
-                </p>
-                
-                <p className="text-b-s text-neutral-white/80 leading-relaxed font-body">
-                  {t.about?.description || ""}
-                </p>
-                
-                <div className="pt-s-2">
-                  <a
-                    href="#contact"
-                    className="inline-block px-8 py-3 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-s uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
-                  >
-                    {t.hero?.cta || "Contáctanos Hoy"}
-                  </a>
-                </div>
+            {/* Column 2: Title and Subtitle */}
+            <div className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+              <div className="inline-block px-3 py-1.5 bg-primary border border-primary w-fit">
+                <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
+                  {t.about?.experienceBadge || "Más de 23 años de experiencia"}
+                </span>
+              </div>
+              
+              <h2 className="text-h-l lg:text-h-xl font-heading font-normal text-neutral-white leading-tight">
+                {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
+              </h2>
+              
+              <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
+                {t.about?.subtitle || ""}
+              </p>
+            </div>
+            
+            {/* Column 3: Description and CTA */}
+            <div className="bg-neutral-black text-neutral-white p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
+              <p className="text-b-xs text-neutral-white/80 leading-relaxed font-body">
+                {t.about?.description || ""}
+              </p>
+              
+              <div className="pt-2">
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2.5 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
+                >
+                  {t.hero?.cta || "Contáctanos Hoy"}
+                </a>
               </div>
             </div>
           </div>
@@ -205,13 +205,13 @@ const IndexPage: React.FC<PageProps> = () => {
       </SectionWrapper>
 
       {/* Certifications Section */}
-      <SectionWrapper className="py-s-8 bg-neutral-light border-y border-neutral-medium-light">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {certifications.map((cert) => (
+      <SectionWrapper className="py-s-8 bg-neutral-light border-y border-neutral-medium-light overflow-hidden">
+        <div className="w-full">
+          <div className="flex items-center gap-32 animate-marquee px-4">
+            {[...certifications, ...certifications, ...certifications, ...certifications].map((cert, index) => (
               <div
-                key={cert.name}
-                className="w-32 md:w-40 h-20 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                key={`${cert.name}-${index}`}
+                className="w-48 md:w-56 h-24 flex-shrink-0 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
               >
                 <img
                   src={cert.image} 
@@ -230,9 +230,9 @@ const IndexPage: React.FC<PageProps> = () => {
       </SectionWrapper>
 
       {/* Video Section */}
-      <SectionWrapper className="py-s-10 bg-neutral-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-20">
-          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">
+      <SectionWrapper className="py-s-10 bg-green-600"> 
+        <div className="max-w-7xl mx-auto px-6 lg:px-20">
+          <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
             {t.video?.title || "Know More About Taxes 2 Go"}
           </h2>
           <div className="aspect-video overflow-hidden border-2 border-neutral-medium-light">
@@ -251,7 +251,7 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* Team Members Section */}
       <SectionWrapper bgImage="/team-bg.jpg" bgOverlay={true} id="team" className="py-s-10 bg-neutral-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <h2 className="text-display-3 font-heading font-normal text-center text-neutral-white mb-s-8">
+          <h2 className="text-display-3 underline font-heading font-normal text-center text-neutral-white mb-s-8">
             {t.team?.title || "Nuestro Equipo"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-s-12 mt-s-8 max-w-4xl mx-auto">
@@ -285,12 +285,12 @@ const IndexPage: React.FC<PageProps> = () => {
       </SectionWrapper>
 
       {/* Services Section */}
-      <SectionWrapper id="services" className="py-s-10 bg-neutral-white">
+      <SectionWrapper id="services" className="py-s-10 bg-green-600">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <h2 className="text-h-xl font-heading font-normal text-center text-neutral-dark mb-s-4">
+          <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-white mb-s-4">
             {(t.services as any)?.title || "Servicios"}
           </h2>
-          <p className="text-b-l text-center text-neutral-medium-dark mb-s-8 max-w-3xl mx-auto font-body">
+          <p className="text-b-l text-center text-neutral-white/90 mb-s-8 max-w-3xl mx-auto font-body">
             {(t.services as any)?.subtitle || "Soluciones fiscales completas para individuos y negocios"}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-s-6">
@@ -360,7 +360,7 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* Specialized Services Section */}
       <SectionWrapper id="specialized-services" className="py-s-10 bg-neutral-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <h2 className="text-h-xl font-heading font-normal text-center text-neutral-dark mb-s-4">
+          <h2 className="text-h-xl underline font-heading font-normal text-center text-neutral-dark mb-s-4">
             {(t.services as any)?.specializedTitle || "Otros Servicios Especializados"}
           </h2>
           <p className="text-b-l text-center text-neutral-medium-dark mb-s-6 max-w-3xl mx-auto font-body">

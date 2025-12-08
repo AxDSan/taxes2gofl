@@ -28,7 +28,7 @@ export const translations = {
       title: "Conoce más sobre Taxes 2 Go",
     },
     about: {
-      title: "About Edwin Venezuela, EA, MSCTA",
+      title: "Acerca de Edwin Venezuela, EA, MSCTA",
       subtitle: "Somos una firma contributiva y de planificación financiera liderada por Edwin Venezuela, Enrolled Agent (Agente Enrolado ante el IRS) y Tax Advisor Certificado, con más de 23 años de experiencia en el sistema contributivo de Estados Unidos.",
       description: "Desde nuestra oficina en Orlando, Florida, contamos con un equipo altamente capacitado, comprometido con ofrecer un servicio profesional, confidencial y accesible tanto a individuos como a negocios de todos los tamaños. Nos especializamos en planillas de individuo, planillas de negocio, planillas corporativas y entidades conducto (S-Corporations, LLCs, Partnerships), así como en el manejo de planillas federales y estatales. Atendemos dueños de pequeños negocios, profesionales por cuenta propia, inversionistas y corporaciones que buscan una planificación fiscal sólida y cumplimiento total con el IRS y las autoridades estatales. Combinamos conocimiento técnico, experiencia práctica y atención al detalle para ayudarte a maximizar tus beneficios contributivos, reducir riesgos y apoyar el crecimiento ordenado de tu negocio y tu patrimonio. Nuestro objetivo es brindarte claridad, orientación estratégica y acompañamiento continuo, para que tomes decisiones informadas y tengas la tranquilidad de que tus obligaciones contributivas están en manos de un equipo experto.",
       experienceBadge: "Más de 23 años de experiencia",
