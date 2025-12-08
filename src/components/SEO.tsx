@@ -13,13 +13,13 @@ interface SEOProps {
 
 // Site metadata - modify these values to update SEO across the site
 const siteMetadata = {
-  title: "Taxes 2 Go",
+  title: "Taxes 2 Go - Tax Preparation & Accounting Services Orlando FL",
   titleTemplate: "%s | Taxes 2 Go",
-  description: "Confianza, cumplimiento y precisión fiscal para su empresa.",
+  description: "Professional tax preparation services in Orlando, FL. Enrolled Agent with 23+ years experience. Individual, S-Corp, LLC tax returns. Bilingual tax services (English/Spanish). Call 407-719-9599.",
   siteUrl: "https://taxes2gofl.com/",
-  image: "/og-image.jpg",
+  image: "/og-image.png",
   twitterUsername: "",
-  author: "Taxes 2 Go",
+  author: "Taxes 2 Go - Edwin Venezuela, EA, MSCTA",
   lang: "en",
   locale: "en_US",
   phone: "407-719-9599",
@@ -33,18 +33,43 @@ const siteMetadata = {
     country: "United States"
   },
   geo: {
-    latitude: 0,
-    longitude: 0
+    latitude: 28.5383,
+    longitude: -81.3792
   },
   social: {
-    facebook: "https://www.facebook.com/VisionAccountingRincon",
-    instagram: "https://www.instagram.com/vision_accounting_group/",
-    linkedin: ""
+    facebook: "https://www.facebook.com/Taxes2go",
+    instagram: "https://www.instagram.com/taxes.2.go.orlando/",
+    linkedin: "https://www.linkedin.com/in/taxes2go/",
+    youtube: "https://www.youtube.com/@taxes2go257",
+    tiktok: "https://www.tiktok.com/@taxes2go"
   },
   keywords: [
-    "keyword1",
-      "keyword2",
-      "keyword3"
+    "tax preparation Orlando",
+    "tax services Orlando FL",
+    "Enrolled Agent Orlando",
+    "tax preparer Orlando",
+    "IRS enrolled agent",
+    "tax accountant Orlando",
+    "individual tax return Orlando",
+    "S-Corp tax return",
+    "LLC tax return",
+    "business tax preparation",
+    "tax planning Orlando",
+    "tax advisor Florida",
+    "bilingual tax services",
+    "Spanish tax preparer Orlando",
+    "tax services near me",
+    "Orlando tax professional",
+    "Florida tax services",
+    "tax compliance Orlando",
+    "small business tax services",
+    "self-employed tax return",
+    "rental property tax return",
+    "tax strategy Orlando",
+    "Edwin Venezuela EA",
+    "MSCTA tax advisor",
+    "taxes2go",
+    "taxes 2 go Orlando"
   ]
 }
 
@@ -75,7 +100,8 @@ const SEO: React.FC<SEOProps> = ({
     "@context": "https://schema.org",
     "@type": "AccountingService",
     "@id": `${siteMetadata.siteUrl}/#business`,
-    name: siteMetadata.title,
+    name: "Taxes 2 Go",
+    alternateName: "Taxes 2 Go LLC",
     description: siteMetadata.description,
     url: siteMetadata.siteUrl,
     telephone: siteMetadata.phone,
@@ -83,6 +109,11 @@ const SEO: React.FC<SEOProps> = ({
     image: seo.image,
     logo: `${siteMetadata.siteUrl}/logo.png`,
     priceRange: "$$",
+    foundingDate: "2001",
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      value: "2-10"
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: siteMetadata.address.street,
@@ -107,8 +138,95 @@ const SEO: React.FC<SEOProps> = ({
     sameAs: [
       siteMetadata.social.facebook,
       siteMetadata.social.instagram,
-      siteMetadata.social.linkedin
-    ].filter(Boolean)
+      siteMetadata.social.linkedin,
+      siteMetadata.social.youtube,
+      siteMetadata.social.tiktok
+    ].filter(Boolean),
+    areaServed: {
+      "@type": "City",
+      name: siteMetadata.address.city,
+      "@id": `${siteMetadata.siteUrl}/#city`
+    },
+    serviceType: [
+      "Tax Preparation",
+      "Tax Planning",
+      "Tax Consulting",
+      "Accounting Services",
+      "Business Tax Services",
+      "Individual Tax Services"
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Tax Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Individual Federal Tax Return",
+            description: "Professional individual tax return preparation"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "S-Corp Tax Returns",
+            description: "S-Corporation tax return preparation and filing"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "LLC Tax Returns",
+            description: "LLC tax return preparation and filing"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Tax Planning",
+            description: "Strategic tax planning for individuals and businesses"
+          }
+        }
+      ]
+    }
+  }
+
+  // Person Schema for Edwin Venezuela
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteMetadata.siteUrl}/#person`,
+    name: "Edwin Venezuela",
+    jobTitle: "Enrolled Agent, MSCTA, CEO",
+    worksFor: {
+      "@id": `${siteMetadata.siteUrl}/#organization`
+    },
+    email: siteMetadata.email,
+    telephone: siteMetadata.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteMetadata.address.street,
+      addressLocality: siteMetadata.address.city,
+      addressRegion: siteMetadata.address.state,
+      postalCode: siteMetadata.address.zip,
+      addressCountry: siteMetadata.address.country
+    },
+    knowsAbout: [
+      "Tax Preparation",
+      "Tax Planning",
+      "IRS Compliance",
+      "Business Tax Strategy",
+      "Individual Tax Returns",
+      "Corporate Tax Returns"
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "IRS Enrolled Agent"
+    }
   }
 
   // Website Schema
@@ -148,7 +266,9 @@ const SEO: React.FC<SEOProps> = ({
     sameAs: [
       siteMetadata.social.facebook,
       siteMetadata.social.instagram,
-      siteMetadata.social.linkedin
+      siteMetadata.social.linkedin,
+      siteMetadata.social.youtube,
+      siteMetadata.social.tiktok
     ].filter(Boolean)
   }
 
@@ -194,8 +314,15 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={seo.title} />
-      <meta property="og:site_name" content={siteMetadata.title} />
+      <meta property="og:site_name" content="Taxes 2 Go" />
       <meta property="og:locale" content={siteMetadata.locale} />
+      <meta property="og:locale:alternate" content="es_ES" />
+      <meta property="og:phone_number" content={siteMetadata.phone} />
+      <meta property="og:street_address" content={siteMetadata.address.street} />
+      <meta property="og:locality" content={siteMetadata.address.city} />
+      <meta property="og:region" content={siteMetadata.address.state} />
+      <meta property="og:postal_code" content={siteMetadata.address.zip} />
+      <meta property="og:country_name" content={siteMetadata.address.country} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -212,10 +339,29 @@ const SEO: React.FC<SEOProps> = ({
 
       {/* Additional SEO */}
       <meta name="format-detection" content="telephone=yes" />
-      <meta name="geo.region" content={siteMetadata.address.state} />
-      <meta name="geo.placename" content={`${siteMetadata.address.city}, ${siteMetadata.address.country}`} />
+      <meta name="geo.region" content={`US-${siteMetadata.address.state}`} />
+      <meta name="geo.placename" content={`${siteMetadata.address.city}, ${siteMetadata.address.state}, ${siteMetadata.address.country}`} />
       <meta name="geo.position" content={`${siteMetadata.geo.latitude};${siteMetadata.geo.longitude}`} />
       <meta name="ICBM" content={`${siteMetadata.geo.latitude}, ${siteMetadata.geo.longitude}`} />
+      <meta name="theme-color" content="#DC2626" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="application-name" content={siteMetadata.title} />
+      <meta name="msapplication-TileColor" content="#DC2626" />
+      
+      {/* Business Information */}
+      <meta name="contact" content={siteMetadata.email} />
+      <meta name="reply-to" content={siteMetadata.email} />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="distribution" content="Global" />
+      <meta name="rating" content="General" />
+      <meta name="revisit-after" content="7 days" />
+      
+      {/* Language and Localization */}
+      <meta httpEquiv="content-language" content="en, es" />
+      <link rel="alternate" hrefLang="en" href={`${siteMetadata.siteUrl}${pathname}`} />
+      <link rel="alternate" hrefLang="es" href={`${siteMetadata.siteUrl}/es${pathname}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${siteMetadata.siteUrl}${pathname}`} />
 
       {/* Preconnect for performance */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -234,6 +380,9 @@ const SEO: React.FC<SEOProps> = ({
       </script>
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
       </script>
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}

@@ -460,8 +460,22 @@ export default IndexPage
 
 export const Head: HeadFC = () => (
   <SEO 
-    title="Inicio"
-    description="Taxes 2 Go - Confianza, cumplimiento y precisión fiscal para su empresa."
+    title="Tax Preparation Services Orlando FL | Enrolled Agent | Taxes 2 Go"
+    description="Professional tax preparation in Orlando, FL. Enrolled Agent with 23+ years experience. Individual, S-Corp, LLC tax returns. Bilingual services (English/Spanish). Free consultation. Call 407-719-9599."
     pathname="/"
+    keywords={[
+      "tax preparation Orlando",
+      "tax services Orlando FL",
+      "Enrolled Agent Orlando",
+      "tax preparer near me",
+      "IRS enrolled agent",
+      "bilingual tax services",
+      "Spanish tax preparer Orlando",
+      "individual tax return",
+      "S-Corp tax return",
+      "LLC tax return",
+      "business tax preparation",
+      "tax planning Orlando"
+    ]}
   />
 )
