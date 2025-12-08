@@ -221,7 +221,7 @@ const IndexPage: React.FC<PageProps> = () => {
               {[...certifications, ...certifications, ...certifications, ...certifications].map((cert, index) => (
                 <div
                   key={`${cert.name}-${index}`}
-                  className="w-48 md:w-56 h-24 flex-shrink-0 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110"
+                  className="w-64 md:w-80 lg:w-96 h-32 md:h-40 lg:h-48 flex-shrink-0 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110"
                 >
                   <img
                     src={cert.image} 
