@@ -229,7 +229,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
       </SectionWrapper>
 
-      {/* Video Section - Edwin's Message */}
+      {/* Video Section */}
       <SectionWrapper className="py-s-10 bg-neutral-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-20">
           <h2 className="text-display-3 font-heading font-normal text-center text-neutral-dark mb-s-8">

@@ -11,6 +11,22 @@ import { motion } from "framer-motion"
 
 import { useI18n } from "../i18n"
 
+// Helper function to convert markdown-style formatting to HTML
+const renderMarkdown = (text: string): React.ReactNode => {
+  if (!text) return null
+  
+  // Split by double asterisks (non-greedy) and process
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      // Remove the asterisks and wrap in strong
+      const boldText = part.slice(2, -2)
+      return <strong key={index} className="font-semibold">{boldText}</strong>
+    }
+    return <span key={index}>{part}</span>
+  })
+}
 
 const PrivacyPolicyPage: React.FC<PageProps> = () => {
   
@@ -60,7 +76,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section1.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section1.content}
+                  {renderMarkdown(pp.section1.content)}
                 </div>
               </section>
             )}
@@ -71,7 +87,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section2.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section2.content}
+                  {renderMarkdown(pp.section2.content)}
                 </div>
               </section>
             )}
@@ -82,7 +98,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section3.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section3.content}
+                  {renderMarkdown(pp.section3.content)}
                 </div>
               </section>
             )}
@@ -93,7 +109,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section4.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section4.content}
+                  {renderMarkdown(pp.section4.content)}
                 </div>
               </section>
             )}
@@ -104,7 +120,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section5.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section5.content}
+                  {renderMarkdown(pp.section5.content)}
                 </div>
               </section>
             )}
@@ -115,7 +131,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section6.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section6.content}
+                  {renderMarkdown(pp.section6.content)}
                 </div>
               </section>
             )}
@@ -126,7 +142,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section7.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section7.content}
+                  {renderMarkdown(pp.section7.content)}
                 </div>
               </section>
             )}
@@ -137,7 +153,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section8.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section8.content}
+                  {renderMarkdown(pp.section8.content)}
                 </div>
               </section>
             )}
@@ -148,7 +164,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section9.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section9.content}
+                  {renderMarkdown(pp.section9.content)}
                 </div>
               </section>
             )}
@@ -159,7 +175,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section10.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section10.content}
+                  {renderMarkdown(pp.section10.content)}
                 </div>
               </section>
             )}
@@ -170,7 +186,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section11.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section11.content}
+                  {renderMarkdown(pp.section11.content)}
                 </div>
               </section>
             )}
@@ -181,7 +197,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section12.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section12.content}
+                  {renderMarkdown(pp.section12.content)}
                 </div>
               </section>
             )}
@@ -192,7 +208,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section13.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section13.content}
+                  {renderMarkdown(pp.section13.content)}
                 </div>
               </section>
             )}
@@ -203,7 +219,7 @@ const PrivacyPolicyPage: React.FC<PageProps> = () => {
                   {pp.section14.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {pp.section14.content}
+                  {renderMarkdown(pp.section14.content)}
                 </div>
               </section>
             )}

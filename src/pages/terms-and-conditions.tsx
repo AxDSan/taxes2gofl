@@ -11,6 +11,22 @@ import { motion } from "framer-motion"
 
 import { useI18n } from "../i18n"
 
+// Helper function to convert markdown-style formatting to HTML
+const renderMarkdown = (text: string): React.ReactNode => {
+  if (!text) return null
+  
+  // Split by double asterisks (non-greedy) and process
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      // Remove the asterisks and wrap in strong
+      const boldText = part.slice(2, -2)
+      return <strong key={index} className="font-semibold">{boldText}</strong>
+    }
+    return <span key={index}>{part}</span>
+  })
+}
 
 const TermsAndConditionsPage: React.FC<PageProps> = () => {
   
@@ -51,7 +67,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section1.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section1.content}
+                  {renderMarkdown(tac.section1.content)}
                 </div>
               </section>
             )}
@@ -62,7 +78,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section2.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section2.content}
+                  {renderMarkdown(tac.section2.content)}
                 </div>
               </section>
             )}
@@ -73,7 +89,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section3.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section3.content}
+                  {renderMarkdown(tac.section3.content)}
                 </div>
               </section>
             )}
@@ -84,7 +100,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section4.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section4.content}
+                  {renderMarkdown(tac.section4.content)}
                 </div>
               </section>
             )}
@@ -95,7 +111,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section5.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section5.content}
+                  {renderMarkdown(tac.section5.content)}
                 </div>
               </section>
             )}
@@ -106,7 +122,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section6.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section6.content}
+                  {renderMarkdown(tac.section6.content)}
                 </div>
               </section>
             )}
@@ -117,7 +133,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section7.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section7.content}
+                  {renderMarkdown(tac.section7.content)}
                 </div>
               </section>
             )}
@@ -128,7 +144,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section8.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section8.content}
+                  {renderMarkdown(tac.section8.content)}
                 </div>
               </section>
             )}
@@ -139,7 +155,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section9.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section9.content}
+                  {renderMarkdown(tac.section9.content)}
                 </div>
               </section>
             )}
@@ -150,7 +166,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section10.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section10.content}
+                  {renderMarkdown(tac.section10.content)}
                 </div>
               </section>
             )}
@@ -161,7 +177,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section11.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section11.content}
+                  {renderMarkdown(tac.section11.content)}
                 </div>
               </section>
             )}
@@ -172,7 +188,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section12.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section12.content}
+                  {renderMarkdown(tac.section12.content)}
                 </div>
               </section>
             )}
@@ -183,7 +199,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section13.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section13.content}
+                  {renderMarkdown(tac.section13.content)}
                 </div>
               </section>
             )}
@@ -194,7 +210,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section14.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section14.content}
+                  {renderMarkdown(tac.section14.content)}
                 </div>
               </section>
             )}
@@ -205,7 +221,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section15.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section15.content}
+                  {renderMarkdown(tac.section15.content)}
                 </div>
               </section>
             )}
@@ -216,7 +232,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section16.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section16.content}
+                  {renderMarkdown(tac.section16.content)}
                 </div>
               </section>
             )}
@@ -227,7 +243,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section17.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section17.content}
+                  {renderMarkdown(tac.section17.content)}
                 </div>
               </section>
             )}
@@ -238,7 +254,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section18.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section18.content}
+                  {renderMarkdown(tac.section18.content)}
                 </div>
               </section>
             )}
@@ -249,7 +265,7 @@ const TermsAndConditionsPage: React.FC<PageProps> = () => {
                   {tac.section19.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {tac.section19.content}
+                  {renderMarkdown(tac.section19.content)}
                 </div>
               </section>
             )}
