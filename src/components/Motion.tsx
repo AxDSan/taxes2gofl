@@ -589,13 +589,24 @@ export const ScrollStaggerContainer: React.FC<ScrollStaggerContainerProps> = ({
     >
       {childrenArray.map((child, index) => {
         // Calculate individual item progress with stagger
-        const itemStart = (index * staggerDelay) / (1 + (totalItems - 1) * staggerDelay)
-        const itemEnd = itemStart + (1 / (1 + (totalItems - 1) * staggerDelay))
+        // Ensure all items can reach completed state
+        const totalStaggerRange = 1 + (totalItems - 1) * staggerDelay
+        const itemStart = (index * staggerDelay) / totalStaggerRange
+        const itemEnd = Math.min(1, itemStart + (1 / totalStaggerRange))
         
-        // Animate in quickly, hold completed state, only rewind when scrolling back up
+        // Animate in quickly (0-25% of item range), hold completed state (25-100%)
+        // Use a smaller animation window to ensure completion
+        const animationWindow = 0.2 // 20% of item's scroll range for animation
         const itemProgress = useTransform(
           scrollYProgress,
-          [0, itemStart, itemStart + 0.25, itemEnd - 0.25, itemEnd, 1],
+          [
+            Math.max(0, itemStart - 0.1), 
+            itemStart, 
+            itemStart + animationWindow, 
+            itemEnd - animationWindow, 
+            itemEnd, 
+            Math.min(1, itemEnd + 0.1)
+          ],
           [0, 0, 1, 1, 1, 1]
         )
 
@@ -645,8 +656,8 @@ const ScrollStaggerItem: React.FC<ScrollStaggerItemProps> = ({
     },
     rotate: {
       opacity,
-      rotate: useTransform(progress, [0, 0.25, 0.75, 1], [-5, 0, 0, -5]),
-      scale: useTransform(progress, [0, 0.25, 0.75, 1], [0.9, 1, 1, 0.9]),
+      rotate: useTransform(progress, [0, 0.25, 0.75, 1], [-5, 0, 0, 0]),
+      scale: useTransform(progress, [0, 0.25, 0.75, 1], [0.9, 1, 1, 1]),
     },
   }
 
