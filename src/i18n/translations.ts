@@ -50,6 +50,8 @@ export const translations = {
       specializedTitle: "Otros Servicios Especializados",
       specializedSubtitle: "Servicios especializados para individuos y empresas",
       mainServices: {
+        accountingBookkeeping: "Contabilidad y Teneduría de Libros",
+        payroll: "Nómina",
         individualFederal: "Planilla Federal Individual",
         sCorp: "Planillas S-Corp",
         llc: "Planillas LLC",
@@ -342,6 +344,8 @@ export const translations = {
       specializedTitle: "Other Specialized Services",
       specializedSubtitle: "Specialized services for individuals and businesses",
       mainServices: {
+        accountingBookkeeping: "Accounting & Bookkeeping",
+        payroll: "Payroll",
         individualFederal: "Individual Federal Tax Return",
         sCorp: "S-Corp Returns",
         llc: "LLC Returns",

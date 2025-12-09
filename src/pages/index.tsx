@@ -94,6 +94,18 @@ const IndexPage: React.FC<PageProps> = () => {
     </svg>
   )
 
+  const AccountingBookkeepingIcon = () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+    </svg>
+  )
+
+  const PayrollIcon = () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  )
+
   const specializedServices = [
     {
       title: (t.services as any)?.planificacion?.title || "Planificación Contributiva",
@@ -322,6 +334,16 @@ const IndexPage: React.FC<PageProps> = () => {
           </ScrollFadeIn>
           <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-s-6" staggerDelay={0.1} variant="scale">
             {[
+              { 
+                title: (t.services as any)?.mainServices?.accountingBookkeeping || "Accounting & Bookkeeping", 
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
+                icon: <AccountingBookkeepingIcon />,
+              },
+              { 
+                title: (t.services as any)?.mainServices?.payroll || "Payroll", 
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+                icon: <PayrollIcon />,
+              },
               { 
                 title: (t.services as any)?.mainServices?.individualFederal || "Individual Federal Tax Return", 
                 image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
