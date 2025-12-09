@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Hero from "../components/Hero"
 import ContactForm from "../components/ContactForm"
+import Modal from "../components/Modal"
 import { useI18n } from "../i18n"
 import { 
   ScrollFadeIn, 
@@ -15,6 +16,7 @@ import {
 
 const IndexPage: React.FC<PageProps> = () => {
   const { t } = useI18n()
+  const [selectedServiceUrl, setSelectedServiceUrl] = React.useState<string | null>(null)
 
   // Certifications data
   const certifications = [
@@ -112,49 +114,49 @@ const IndexPage: React.FC<PageProps> = () => {
       title: (t.services as any)?.mainServices?.accountingBookkeeping || "Accounting & Bookkeeping", 
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
       icon: <AccountingBookkeepingIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/6cjmFBaWFiABUtxj5i3A", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.payroll || "Payroll", 
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
       icon: <PayrollIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/B8MJ7PGEI13vXKuvfdNI", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.individualFederal || "Individual Federal Tax Return", 
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
       icon: <IndividualIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/HjE0e7Rop2tByJBjir16", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.sCorp || "S-Corp Returns", 
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
       icon: <SCorpIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/caGlFuGryngyvG5emlz9", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.llc || "LLC Returns", 
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
       icon: <LLCIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/vgQaDliUMgPbTNxWbRDi", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.selfEmployed || "Self-Employed Return", 
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       icon: <SelfEmployedIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/bYYyAWVWfQPy1Yp6JpLr", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.rent || "Rent Returns", 
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       icon: <RentIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/DlJCjT3UMyogc2lj0DFi", // Update with specific URL for this service
     },
     { 
       title: (t.services as any)?.mainServices?.taxAdvising || "Tax Advising", 
       image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
       icon: <TaxAdvisingIcon />,
-      url: "#contact", // Update with specific URL for this service
+      url: "https://links.taxes2go-domytaxes.com/widget/form/Y8Mj8EuIGX7BVat98FGQ", // Update with specific URL for this service
     },
   ]
 
@@ -386,14 +388,23 @@ const IndexPage: React.FC<PageProps> = () => {
           </ScrollFadeIn>
           <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-s-6" staggerDelay={0.1} variant="scale">
             {mainServices.map((service) => {
-              const isExternal = service.url.startsWith("http://") || service.url.startsWith("https://")
+              const handleClick = (e: React.MouseEvent) => {
+                e.preventDefault()
+                // Check if it's an external URL (http/https) - open in modal
+                // Internal links (like #contact) navigate normally
+                if (service.url.startsWith("http://") || service.url.startsWith("https://")) {
+                  setSelectedServiceUrl(service.url)
+                } else {
+                  // For internal links, navigate normally
+                  window.location.href = service.url
+                }
+              }
+              
               return (
-              <a 
-                key={service.title} 
-                href={service.url}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="relative min-h-72 overflow-hidden rounded-sm group cursor-pointer block"
+              <button
+                key={service.title}
+                onClick={handleClick}
+                className="relative min-h-72 overflow-hidden rounded-sm group cursor-pointer block w-full text-left"
               >
                 {/* Background Image with Blur */}
                 <div 
@@ -416,10 +427,28 @@ const IndexPage: React.FC<PageProps> = () => {
                     {service.title}
                   </h3>
                 </div>
-              </a>
+              </button>
               )
             })}
           </ScrollStaggerContainer>
+          
+          {/* Service Modal with iframe */}
+          <Modal
+            isOpen={selectedServiceUrl !== null}
+            onClose={() => setSelectedServiceUrl(null)}
+            title={mainServices.find(s => s.url === selectedServiceUrl)?.title || "Service"}
+          >
+            {selectedServiceUrl && (
+              <div className="w-full h-[80vh] -m-4">
+                <iframe
+                  src={selectedServiceUrl}
+                  className="w-full h-full border-0"
+                  title={mainServices.find(s => s.url === selectedServiceUrl)?.title || "Service Form"}
+                  allow="camera; microphone; geolocation"
+                />
+              </div>
+            )}
+          </Modal>
         </div>
       </SectionWrapper>
 
