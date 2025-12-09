@@ -11,12 +11,21 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
     React.useEffect(() => {
         if (isOpen) {
+            // Calculate scrollbar width
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+            
+            // Prevent scrolling
             document.body.style.overflow = "hidden"
+            document.body.style.paddingRight = `${scrollbarWidth}px`
         } else {
-            document.body.style.overflow = "unset"
+            // Restore scrolling
+            document.body.style.overflow = ""
+            document.body.style.paddingRight = ""
         }
         return () => {
-            document.body.style.overflow = "unset"
+            // Cleanup
+            document.body.style.overflow = ""
+            document.body.style.paddingRight = ""
         }
     }, [isOpen])
 
