@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({
   const { t } = useI18n()
   const heroSlogan = slogan || t.hero?.subtitle || "Confianza, cumplimiento y precisión fiscal para su empresa."
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-dark">
+    <section className="relative h-[calc(100vh-5rem)] mt-20 flex items-center justify-center overflow-hidden bg-neutral-dark">
       {/* Video Background */}
       {videoSrc ? (
         <video

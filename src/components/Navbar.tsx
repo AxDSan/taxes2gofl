@@ -38,9 +38,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-neutral-white/95 backdrop-blur-sm border-b border-neutral-medium-light" : "bg-transparent"
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-white border-b border-neutral-medium-light">
       <div className="w-full px-6 lg:px-20">
         <div className="flex items-center h-20">
           {/* Logo - Far Left */}
@@ -64,11 +62,7 @@ const Navbar: React.FC = () => {
                     onClick={link.href === "/" ? handleHomeClick : undefined}
                     target={(link as any).external ? "_blank" : undefined}
                     rel={(link as any).external ? "noopener noreferrer" : undefined}
-                    className={`transition-all font-body text-[0.721875rem] font-bold uppercase tracking-wide hover:underline whitespace-nowrap ${
-                      scrolled 
-                        ? "text-neutral-medium-dark hover:text-neutral-dark" 
-                        : "text-neutral-white hover:text-neutral-white/80"
-                    }`}
+                    className="transition-all font-body text-[0.721875rem] font-bold uppercase tracking-wide hover:underline whitespace-nowrap text-neutral-dark hover:text-neutral-black"
                   >
                     {link.name}
                   </a>
@@ -82,11 +76,7 @@ const Navbar: React.FC = () => {
             {/* Contact Button */}
             <a
               href="#contact"
-              className={`px-6 py-2 font-body font-semibold text-sm uppercase tracking-wide transition-colors border ${
-                scrolled 
-                  ? "bg-primary text-neutral-white hover:bg-primary-medium border-primary-dark" 
-                  : "bg-transparent text-neutral-white hover:bg-neutral-white/10 border-neutral-white"
-              }`}
+              className="px-6 py-2 font-body font-semibold text-sm uppercase tracking-wide transition-colors border bg-primary text-neutral-white hover:bg-primary-medium border-primary-dark"
             >
               {t.nav.contact}
             </a>
@@ -94,17 +84,13 @@ const Navbar: React.FC = () => {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-2 px-4 py-2 border transition-colors bg-transparent ${
-                scrolled 
-                  ? "border-neutral-medium-light hover:border-neutral-medium-dark" 
-                  : "border-neutral-white/30 hover:border-neutral-white/50"
-              }`}
+              className="flex items-center gap-2 px-4 py-2 border transition-colors bg-transparent border-neutral-medium-light hover:border-neutral-medium-dark"
               aria-label="Toggle language"
             >
-              <svg className={`w-4 h-4 ${scrolled ? "text-neutral-medium-dark" : "text-neutral-white"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-neutral-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
               </svg>
-              <span className={`text-sm font-body font-medium uppercase ${scrolled ? "text-neutral-medium-dark" : "text-neutral-white"}`}>{language}</span>
+              <span className="text-sm font-body font-medium uppercase text-neutral-dark">{language}</span>
             </button>
 
             {/* Social Media Links - Far Right */}
@@ -113,7 +99,7 @@ const Navbar: React.FC = () => {
                 href="https://www.facebook.com/Taxes2go"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${scrolled ? "text-neutral-medium-dark hover:text-primary" : "text-neutral-white hover:text-neutral-white/80"}`}
+                className="transition-colors text-neutral-dark hover:text-primary"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -124,7 +110,7 @@ const Navbar: React.FC = () => {
                 href="https://www.instagram.com/taxes.2.go.orlando/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${scrolled ? "text-neutral-medium-dark hover:text-primary" : "text-neutral-white hover:text-neutral-white/80"}`}
+                className="transition-colors text-neutral-dark hover:text-primary"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -135,7 +121,7 @@ const Navbar: React.FC = () => {
                 href="https://www.youtube.com/@taxes2go257"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${scrolled ? "text-neutral-medium-dark hover:text-primary" : "text-neutral-white hover:text-neutral-white/80"}`}
+                className="transition-colors text-neutral-dark hover:text-primary"
                 aria-label="YouTube"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -146,7 +132,7 @@ const Navbar: React.FC = () => {
                 href="https://www.tiktok.com/@taxes2go"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${scrolled ? "text-neutral-medium-dark hover:text-primary" : "text-neutral-white hover:text-neutral-white/80"}`}
+                className="transition-colors text-neutral-dark hover:text-primary"
                 aria-label="TikTok"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 32 32">
@@ -157,7 +143,7 @@ const Navbar: React.FC = () => {
                 href="https://www.linkedin.com/in/taxes2go/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${scrolled ? "text-neutral-medium-dark hover:text-primary" : "text-neutral-white hover:text-neutral-white/80"}`}
+                className="transition-colors text-neutral-dark hover:text-primary"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -169,9 +155,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden ml-auto transition-colors ${
-              scrolled ? "text-neutral-dark" : "text-neutral-white"
-            }`}
+            className="lg:hidden ml-auto transition-colors text-neutral-dark"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
