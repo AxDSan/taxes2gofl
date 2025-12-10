@@ -222,58 +222,106 @@ const IndexPage: React.FC<PageProps> = () => {
       <Hero videoSrc="/taxes2go.mp4" />
 
       {/* About Edwin Section */}
-      <SectionWrapper id="about" className="py-s-8 bg-neutral-dark text-neutral-white">
-        <div className="max-w-[1800px] mx-auto px-4 lg:px-8">
-          <ScrollStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.15} variant="scale">
-            {/* Column 1: Image */}
-            <div className="relative bg-neutral-light overflow-hidden rounded-lg aspect-[4/5] md:aspect-auto">
+      <SectionWrapper id="about" className="py-24 lg:py-32 bg-neutral-dark text-neutral-white relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-neutral-800/10 -skew-x-12 transform translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            
+            {/* Image Column - Spans 5 columns */}
+            <div className="lg:col-span-5 relative group">
               <ScrollScaleIn>
-                <img
-                  src={teamMembers[0].image}
-                  alt={teamMembers[0].name}
-                  loading="lazy"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                  }}
-                  className="w-full h-full object-cover"
-                />
+                <div className="relative z-10 rounded-sm overflow-hidden shadow-2xl border border-neutral-700/50">
+                   <div className="aspect-[3/4] relative">
+                     <img
+                        src={teamMembers[0].image}
+                        alt={teamMembers[0].name}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                        }}
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                   </div>
+                </div>
+                
+                {/* Decorative Frame/Offset */}
+                <div className="absolute top-4 -left-4 w-full h-full border border-primary/30 rounded-sm -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
               </ScrollScaleIn>
             </div>
-            
-            {/* Column 2: Title and Subtitle */}
-            <ScrollSlideIn side="left" className="bg-neutral-black p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
-              <div className="inline-block px-3 py-1.5 bg-primary border border-primary w-fit">
-                <span className="text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide">
-                  {t.about?.experienceBadge || "Más de 23 años de experiencia"}
-                </span>
-              </div>
-              
-              <h2 className="text-h-l lg:text-h-xl font-heading font-normal text-neutral-white leading-tight">
-                {t.about?.title || "About Edwin Venezuela, EA, MSCTA"}
-              </h2>
-              
-              <p className="text-b-s text-neutral-white/95 leading-relaxed font-body">
-                {t.about?.subtitle || ""}
-              </p>
-            </ScrollSlideIn>
-            
-            {/* Column 3: Description and CTA */}
-            <ScrollSlideIn side="right" className="bg-neutral-black p-6 lg:p-8 flex flex-col justify-center space-y-4 rounded-lg">
-              <p className="text-b-s text-neutral-white/90 leading-relaxed font-body">
-                {t.about?.description || ""}
-              </p>
-              
-              <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-block px-6 py-2.5 border-2 border-neutral-white text-neutral-white font-body font-semibold text-b-xs uppercase tracking-wide hover:bg-neutral-white hover:text-neutral-black transition-all duration-300"
-                >
-                  {t.hero?.cta || "Contáctanos Hoy"}
-                </a>
-              </div>
-            </ScrollSlideIn>
-          </ScrollStaggerContainer>
+
+            {/* Content Column - Spans 7 columns */}
+            <div className="lg:col-span-7 pl-0 lg:pl-10">
+              <ScrollStaggerContainer staggerDelay={0.1}>
+                
+                {/* Badge */}
+                <ScrollSlideIn side="right">
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="h-px w-16 bg-primary"></span>
+                    <span className="text-primary font-body font-medium tracking-[0.2em] uppercase text-sm">
+                      {t.about?.experienceBadge || "Más de 23 años de experiencia"}
+                    </span>
+                  </div>
+                </ScrollSlideIn>
+
+                {/* Heading */}
+                <ScrollSlideIn side="right">
+                  <h2 className="text-display-3 font-heading font-normal text-neutral-white mb-4 leading-none">
+                    {t.team?.edwin?.name || "Edwin Venezuela"}
+                  </h2>
+                  <p className="text-h-m text-neutral-400 font-heading italic mb-8">
+                    {t.team?.edwin?.title || "CEO, EA, MSCTA"}
+                  </p>
+                </ScrollSlideIn>
+
+                {/* Description */}
+                <ScrollSlideIn side="right">
+                  <div className="space-y-6">
+                    <p className="text-b-l text-neutral-light/90 font-light leading-relaxed border-l-2 border-neutral-700 pl-6">
+                      {t.about?.subtitle || "Especialista en resolución de impuestos y planificación estratégica para individuos y negocios."}
+                    </p>
+                    <p className="text-b-m text-neutral-medium-light leading-relaxed font-body">
+                      {t.about?.description || "Con una trayectoria probada y un compromiso inquebrantable con la excelencia, Edwin ofrece soluciones fiscales personalizadas que maximizan sus beneficios y garantizan el cumplimiento normativo."}
+                    </p>
+                  </div>
+                </ScrollSlideIn>
+
+                {/* Credentials & CTA */}
+                <ScrollSlideIn side="right">
+                  <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+                     <a
+                      href="#contact"
+                      className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-neutral-white overflow-hidden transition-all duration-300 hover:bg-primary-dark"
+                    >
+                      <span className="relative z-10 uppercase tracking-widest text-sm font-bold">
+                        {t.hero?.cta || "Contáctanos Hoy"}
+                      </span>
+                      <svg className="w-4 h-4 relative z-10 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+
+                    <div className="flex items-center gap-4 text-neutral-medium">
+                      <span className="text-sm uppercase tracking-wider font-medium">Certified by:</span>
+                      <div className="flex gap-3">
+                        {certifications.slice(0, 3).map((cert, idx) => (
+                           <div key={idx} className="w-8 h-8 opacity-50 hover:opacity-100 transition-opacity" title={cert.name}>
+                              <img src={cert.image} alt={cert.name} className="w-full h-full object-contain filter invert" />
+                           </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollSlideIn>
+
+              </ScrollStaggerContainer>
+            </div>
+          </div>
         </div>
       </SectionWrapper>
 
