@@ -15,8 +15,13 @@ export const translations = {
     hero: {
       title: "Taxes 2 Go",
       subtitle: "Confianza, cumplimiento y precisión fiscal para su empresa.",
-      cta: "Contáctanos Hoy",
+      cta: "Llamada de Descubrimiento",
       services: "Nuestros Servicios",
+    },
+    whatsappCta: {
+      title: "¿Quieres comenzar tu negocio? ¿O necesitas ayuda...?",
+      subtitle: "Envíanos un mensaje por WhatsApp y te ayudamos a empezar.",
+      button: "Escríbenos por WhatsApp",
     },
     contact: {
       title: "Contáctanos Hoy",
@@ -435,8 +440,13 @@ export const translations = {
     hero: {
       title: "Taxes 2 Go",
       subtitle: "Trust, compliance and tax precision for your business.",
-      cta: "Contact Us Today",
+      cta: "Discovery Call",
       services: "Our Services",
+    },
+    whatsappCta: {
+      title: "Do you want to start your business? Or need any help...",
+      subtitle: "Message us on WhatsApp and we'll help you get started.",
+      button: "Chat on WhatsApp",
     },
     contact: {
       title: "Contact Us Today",

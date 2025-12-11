@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useI18n } from "../i18n"
+import { WHATSAPP_NUMBER_DISPLAY, WHATSAPP_URL } from "../constants/contact"
 
 export interface SocialLink {
   platform: "facebook" | "instagram" | "whatsapp" | "twitter" | "linkedin" | "youtube" | "tiktok"
@@ -54,7 +55,7 @@ const defaultSocialLinks: SocialLink[] = [
   { platform: "youtube", href: "https://www.youtube.com/@taxes2go257" },
   { platform: "tiktok", href: "https://www.tiktok.com/@taxes2go" },
   { platform: "linkedin", href: "https://www.linkedin.com/in/taxes2go/" },
-  { platform: "whatsapp", href: "https://wa.me/4077199599" },
+  { platform: "whatsapp", href: WHATSAPP_URL },
 ]
 
 const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => {
@@ -99,8 +100,8 @@ const Footer: React.FC<FooterProps> = ({ socialLinks = defaultSocialLinks }) => 
             <ul className="space-y-1 text-neutral-white/60 text-b-xs font-body">
               <li>5769 Curry Ford Road</li>
               <li>Orlando, FL 32822</li>
-              <li>Tel: 407-719-9599</li>
-              <li>WhatsApp: 407-719-9599</li>
+              <li>Tel: {WHATSAPP_NUMBER_DISPLAY}</li>
+              <li>WhatsApp: {WHATSAPP_NUMBER_DISPLAY}</li>
               <li>info@taxes2gofl.com</li>
             </ul>
           </div>

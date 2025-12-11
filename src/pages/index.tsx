@@ -5,6 +5,7 @@ import SEO from "../components/SEO"
 import Hero from "../components/Hero"
 import ContactForm from "../components/ContactForm"
 import { useI18n } from "../i18n"
+import { WHATSAPP_NUMBER_DISPLAY, WHATSAPP_URL } from "../constants/contact"
 import { 
   ScrollFadeIn, 
   ScrollStaggerContainer, 
@@ -291,34 +292,6 @@ const IndexPage: React.FC<PageProps> = () => {
                   </div>
                 </ScrollSlideIn>
 
-                {/* Credentials & CTA */}
-                <ScrollSlideIn side="right">
-                  <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
-                     <a
-                      href="#contact"
-                      className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-neutral-white overflow-hidden transition-all duration-300 hover:bg-primary-dark"
-                    >
-                      <span className="relative z-10 uppercase tracking-widest text-sm font-bold">
-                        {t.hero?.cta || "Contáctanos Hoy"}
-                      </span>
-                      <svg className="w-4 h-4 relative z-10 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </a>
-
-                    <div className="flex items-center gap-4 text-neutral-medium">
-                      <span className="text-sm uppercase tracking-wider font-medium">Certified by:</span>
-                      <div className="flex gap-3">
-                        {certifications.slice(0, 3).map((cert, idx) => (
-                           <div key={idx} className="w-8 h-8 opacity-50 hover:opacity-100 transition-opacity" title={cert.name}>
-                              <img src={cert.image} alt={cert.name} className="w-full h-full object-contain filter invert" />
-                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </ScrollSlideIn>
-
               </ScrollStaggerContainer>
             </div>
           </div>
@@ -519,6 +492,44 @@ const IndexPage: React.FC<PageProps> = () => {
               </div>
             ))}
           </ScrollStaggerContainer>
+        </div>
+      </SectionWrapper>
+
+      {/* WhatsApp CTA Section */}
+      <SectionWrapper id="whatsapp" className="py-s-10 bg-neutral-dark">
+        <div className="max-w-7xl mx-auto px-6 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-s-8 items-center">
+            <div className="lg:col-span-7 text-neutral-white">
+              <ScrollFadeIn direction="down">
+                <h2 className="text-h-xl font-heading font-normal mb-s-3">
+                  {(t as any)?.whatsappCta?.title || "Do you want to start your business? Or need any help..."}
+                </h2>
+              </ScrollFadeIn>
+              <ScrollFadeIn>
+                <p className="text-b-m text-neutral-white/80 font-body max-w-2xl">
+                  {(t as any)?.whatsappCta?.subtitle || "Message us on WhatsApp and we'll help you get started."}
+                </p>
+              </ScrollFadeIn>
+            </div>
+            <div className="lg:col-span-5">
+              <ScrollScaleIn>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 w-full lg:w-auto px-6 py-4 font-body font-semibold text-sm uppercase tracking-wide transition-colors border bg-primary text-neutral-white hover:bg-primary-medium border-primary-dark"
+                  aria-label={`WhatsApp ${WHATSAPP_NUMBER_DISPLAY}`}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.47,12.5l-.94-.48a.87.87,0,0,0-.9.11l-.42.39a.87.87,0,0,1-.9.13,6.93,6.93,0,0,1-2.05-1.63A6.93,6.93,0,0,1,10.63,9a.87.87,0,0,1,.13-.9l.39-.42a.87.87,0,0,0,.11-.9l-.48-.94a.87.87,0,0,0-1.1-.4,2.61,2.61,0,0,0-1.53,1.85,6,6,0,0,0,1.11,4.06,10.39,10.39,0,0,0,3.46,3.2,6,6,0,0,0,4.06,1.11,2.61,2.61,0,0,0,1.85-1.53A.87.87,0,0,0,17.47,12.5ZM12,2A10,10,0,0,0,3.51,17.68L2.11,22l4.32-1.4A10,10,0,1,0,12,2Z" />
+                  </svg>
+                  <span>
+                    {(t as any)?.whatsappCta?.button || `WhatsApp ${WHATSAPP_NUMBER_DISPLAY}`}
+                  </span>
+                </a>
+              </ScrollScaleIn>
+            </div>
+          </div>
         </div>
       </SectionWrapper>
 

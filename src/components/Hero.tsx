@@ -1,6 +1,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { useI18n } from "../i18n"
+import Modal from "./Modal"
 
 interface HeroProps {
   videoSrc?: string
@@ -14,6 +15,7 @@ const Hero: React.FC<HeroProps> = ({
   slogan,
 }) => {
   const { t } = useI18n()
+  const [isDiscoveryOpen, setIsDiscoveryOpen] = React.useState(false)
   const heroSlogan = slogan || t.hero?.subtitle || "Confianza, cumplimiento y precisión fiscal para su empresa."
   return (
     <section className="relative h-[calc(100vh-5rem)] mt-20 flex items-center justify-center overflow-hidden bg-neutral-dark">
@@ -73,12 +75,15 @@ const Hero: React.FC<HeroProps> = ({
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={() => setIsDiscoveryOpen(true)}
             className="bg-primary text-neutral-white hover:bg-primary-medium px-8 py-4 font-body font-semibold text-sm uppercase tracking-wide transition-colors border border-primary-dark"
+            aria-haspopup="dialog"
+            aria-expanded={isDiscoveryOpen}
           >
-            {t.hero?.cta || "Contáctanos Hoy"}
-          </a>
+            {t.hero?.cta || "Discovery Call"}
+          </button>
           <a
             href="#services"
             className="bg-transparent border-2 border-neutral-white text-neutral-white hover:bg-neutral-white/10 px-8 py-4 font-body font-semibold text-sm uppercase tracking-wide transition-colors"
@@ -86,6 +91,21 @@ const Hero: React.FC<HeroProps> = ({
             {t.hero?.services || "Nuestros Servicios"}
           </a>
         </motion.div>
+
+        <Modal
+          isOpen={isDiscoveryOpen}
+          onClose={() => setIsDiscoveryOpen(false)}
+          title={t.hero?.cta || "Discovery Call"}
+          bodyClassName="flex-1 overflow-hidden p-0"
+        >
+          <iframe
+            src="https://links.taxes2go-domytaxes.com/widget/form/ruVEmDh6fv0qteXUuiv1"
+            title={t.hero?.cta || "Discovery Call"}
+            className="w-full h-full min-h-[70vh]"
+            style={{ border: "none" }}
+            loading="lazy"
+          />
+        </Modal>
       </div>
     </section>
   )
