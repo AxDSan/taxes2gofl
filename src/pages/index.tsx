@@ -252,7 +252,7 @@ const IndexPage: React.FC<PageProps> = () => {
                         src={teamMembers[0].image}
                         alt={teamMembers[0].name}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
                           target.style.display = 'none'
