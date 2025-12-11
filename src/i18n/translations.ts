@@ -324,6 +324,10 @@ export const translations = {
       messagePlaceholder: "Su mensaje",
       submit: "Enviar",
     },
+    ghlForm: {
+      noFormAvailable: "No hay formulario disponible",
+      languageNotice: "Este formulario está en un idioma diferente al seleccionado",
+    },
   },
   en: {
     nav: {
@@ -647,6 +651,10 @@ export const translations = {
       message: "Message",
       messagePlaceholder: "Your message",
       submit: "Submit",
+    },
+    ghlForm: {
+      noFormAvailable: "No form available",
+      languageNotice: "This form is in a different language than selected",
     },
   },
 }

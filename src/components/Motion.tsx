@@ -537,13 +537,13 @@ export const ScrollSlideIn: React.FC<ScrollSlideInProps> = ({
   })
 
   // Animate in quickly (0-25%), hold completed state (25-75%), only rewind when scrolling back up
-  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 1], [0, 1, 1])
   const x = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.75, 1],
-    side === "left" ? [-100, 0, 0, -100] : [100, 0, 0, 100]
+    [0, 0.25, 1],
+    side === "left" ? [-100, 0, 0] : [100, 0, 0]
   )
-  const scale = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0.95, 1, 1, 0.95])
+  const scale = useTransform(scrollYProgress, [0, 0.25, 1], [0.95, 1, 1])
 
   return (
     <motion.div

@@ -8,7 +8,7 @@ interface GoHighLevelFormProps {
   formUrlEs?: string
   /** English form URL from GoHighLevel */
   formUrlEn?: string
-  /** Form height in pixels */
+  /** Form height in pixels (optional - if not provided, form will be flexible height) */
   height?: number
   /** Optional taller height (px) for small screens */
   mobileHeight?: number
@@ -31,28 +31,30 @@ interface GoHighLevelFormProps {
 const GoHighLevelForm: React.FC<GoHighLevelFormProps> = ({
   formUrlEs,
   formUrlEn,
-  height = 800,
+  height,
   mobileHeight,
   formId = "ghl-form",
   className = "",
 }) => {
-  
+
   const { language, t } = useI18n()
-  {{else}}
-  const language = "en"
-  
-  const [containerHeight, setContainerHeight] = React.useState(height)
-  const resolvedMobileHeight = React.useMemo(() => mobileHeight ?? height + 400, [mobileHeight, height])
+
+  const [containerHeight, setContainerHeight] = React.useState<number | undefined>(height)
+  const resolvedMobileHeight = React.useMemo(() => mobileHeight ?? (height ? height + 400 : undefined), [mobileHeight, height])
 
   React.useEffect(() => {
-    const updateHeight = () => {
-      const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
-      setContainerHeight(isMobile ? resolvedMobileHeight : height)
-    }
+    if (height !== undefined) {
+      const updateHeight = () => {
+        const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
+        setContainerHeight(isMobile ? resolvedMobileHeight : height)
+      }
 
-    updateHeight()
-    window.addEventListener("resize", updateHeight)
-    return () => window.removeEventListener("resize", updateHeight)
+      updateHeight()
+      window.addEventListener("resize", updateHeight)
+      return () => window.removeEventListener("resize", updateHeight)
+    } else {
+      setContainerHeight(undefined)
+    }
   }, [height, resolvedMobileHeight])
 
   // Determine which URL to use based on language
@@ -82,11 +84,7 @@ const GoHighLevelForm: React.FC<GoHighLevelFormProps> = ({
     return (
       <div className={`bg-gray-800/50 rounded-lg p-8 text-center ${className}`}>
         <p className="text-gray-400">
-          
-          {t.ghlForm.noFormAvailable}
-          {{else}}
-          No form available
-          
+          {t.ghlForm?.noFormAvailable || "No form available"}
         </p>
       </div>
     )
@@ -97,25 +95,24 @@ const GoHighLevelForm: React.FC<GoHighLevelFormProps> = ({
       {isLanguageMismatch && (
         <div className="bg-primary-900/30 border border-primary-700/30 rounded-lg p-4 mb-4">
           <p className="text-primary-300 text-sm text-center">
-            
-            {t.ghlForm.languageNotice}
-            {{else}}
-            This form is in a different language than selected
-            
+            {t.ghlForm?.languageNotice || "This form is in a different language than selected"}
           </p>
         </div>
       )}
-      <div 
-        className="rounded-lg overflow-hidden"
-        style={{ height: containerHeight }}
+      <div
+        className="rounded-none overflow-hidden"
+        style={containerHeight ? { height: containerHeight } : {}}
       >
         <iframe
           src={currentFormUrl}
-          style={{ 
-            width: "100%", 
-            height: "100%", 
-            border: "none", 
-            borderRadius: "3px" 
+          style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+            borderRadius: "0px",
+            margin: "0",
+            padding: "0",
+            display: "block"
           }}
           id={`inline-${formId}`}
           data-layout="{'id':'INLINE'}"
@@ -126,7 +123,7 @@ const GoHighLevelForm: React.FC<GoHighLevelFormProps> = ({
           data-deactivation-type="neverDeactivate"
           data-deactivation-value=""
           data-form-name="Contact Form"
-          data-height={containerHeight}
+          {...(containerHeight && { 'data-height': containerHeight })}
           data-layout-iframe-id={`inline-${formId}`}
           data-form-id={formId}
           title="Contact Form"

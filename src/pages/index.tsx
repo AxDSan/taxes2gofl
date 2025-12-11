@@ -3,13 +3,13 @@ import type { HeadFC, PageProps } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Hero from "../components/Hero"
-import ContactForm from "../components/ContactForm"
+import GoHighLevelForm from "../components/GoHighLevelForm"
 import { useI18n } from "../i18n"
 import { WHATSAPP_NUMBER_DISPLAY, WHATSAPP_URL } from "../constants/contact"
-import { 
-  ScrollFadeIn, 
-  ScrollStaggerContainer, 
-  ScrollScaleIn, 
+import {
+  ScrollFadeIn,
+  ScrollStaggerContainer,
+  ScrollScaleIn,
   ScrollRotateIn,
   ScrollSlideIn,
 } from "../components/Motion"
@@ -548,54 +548,53 @@ const IndexPage: React.FC<PageProps> = () => {
       {/* Contact Section */}
       <SectionWrapper id="contact" className="py-s-10 bg-primary">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-s-12">
-            <ScrollSlideIn side="left">
-              <div className="text-neutral-white">
-                <ScrollFadeIn>
-                  <h2 className="text-display-3 font-heading font-normal mb-s-6">
-                    {t.contact?.title || "Contáctanos Hoy"}
-                  </h2>
-                </ScrollFadeIn>
-                <ScrollStaggerContainer className="space-y-6 mb-s-8" staggerDelay={0.1} variant="fade">
-                  <div className="flex items-start gap-4">
-                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-body font-semibold text-b-m">{t.contact?.address || "Dirección"}</p>
-                      <p className="font-body text-b-m">5769 Curry Ford Road</p>
-                      <p className="font-body text-b-m">Orlando, FL 32822</p>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-s-6 items-start">
+            <div className="lg:col-span-4 text-neutral-white">
+              <h2 className="text-display-3 font-heading font-normal mb-s-6">
+                {t.contact?.title || "Contáctanos Hoy"}
+              </h2>
+              <div className="space-y-6 mb-s-8">
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div>
+                    <p className="font-body font-semibold text-b-m">{t.contact?.address || "Dirección"}</p>
+                    <p className="font-body text-b-m">5769 Curry Ford Road</p>
+                    <p className="font-body text-b-m">Orlando, FL 32822</p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <div>
-                      <p className="font-body font-semibold text-b-m">{t.contact?.phone || "Teléfono / WhatsApp"}</p>
-                      <p className="font-body text-b-m">407-719-9599</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <div>
-                      <p className="font-body font-semibold text-b-m">{t.contact?.email || "Email"}</p>
-                      <p className="font-body text-b-m">info@taxes2gofl.com</p>
-                    </div>
-                  </div>
-                </ScrollStaggerContainer>
-              </div>
-            </ScrollSlideIn>
-            <ScrollSlideIn side="right">
-              <ScrollScaleIn>
-                <div className="bg-neutral-white border border-neutral-medium-light p-s-8">
-                  <ContactForm />
                 </div>
-              </ScrollScaleIn>
-            </ScrollSlideIn>
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <div>
+                    <p className="font-body font-semibold text-b-m">{t.contact?.phone || "Teléfono / WhatsApp"}</p>
+                    <p className="font-body text-b-m">407-719-9599</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <p className="font-body font-semibold text-b-m">{t.contact?.email || "Email"}</p>
+                    <p className="font-body text-b-m">info@taxes2gofl.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-8 w-full h-full">
+              <GoHighLevelForm
+                formUrlEn="https://links.taxes2go-domytaxes.com/widget/form/ruVEmDh6fv0qteXUuiv1"
+                formUrlEs="https://links.taxes2go-domytaxes.com/widget/form/ruVEmDh6fv0qteXUuiv1"
+                height={1200}
+                mobileHeight={1400}
+                formId="contact-form"
+                className="bg-transparent rounded-none"
+              />
+            </div>
           </div>
         </div>
       </SectionWrapper>
