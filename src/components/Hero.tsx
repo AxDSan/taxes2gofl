@@ -99,7 +99,7 @@ const Hero: React.FC<HeroProps> = ({
           bodyClassName="flex-1 overflow-hidden p-0"
         >
           <iframe
-            src="https://links.taxes2go-domytaxes.com/widget/form/ruVEmDh6fv0qteXUuiv1"
+            src="https://links.taxes2go-domytaxes.com/widget/booking/ZM7WwLSRSStlt28KPPID"
             title={t.hero?.cta || "Discovery Call"}
             className="w-full h-full min-h-[70vh]"
             style={{ border: "none" }}

@@ -107,6 +107,12 @@ const IndexPage: React.FC<PageProps> = () => {
     </svg>
   )
 
+  const OtherServicesIcon = () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+
   // Main services with individual URLs
   const mainServices = [
     { 
@@ -156,6 +162,12 @@ const IndexPage: React.FC<PageProps> = () => {
       image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop",
       icon: <TaxAdvisingIcon />,
       url: "https://links.taxes2go-domytaxes.com/widget/form/Y8Mj8EuIGX7BVat98FGQ",
+    },
+    {
+      title: (t.services as any)?.mainServices?.otherServices || "Other Services",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
+      icon: <OtherServicesIcon />,
+      url: "https://links.taxes2go-domytaxes.com/widget/form/wvYszrnbfQQPuwlsbiqc",
     },
   ]
 

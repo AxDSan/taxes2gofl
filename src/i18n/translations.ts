@@ -63,6 +63,7 @@ export const translations = {
         selfEmployed: "Planilla Trabajador por Cuenta Propia",
         rent: "Planillas de Renta",
         taxAdvising: "Asesoría Fiscal",
+        otherServices: "Otros Servicios",
       },
       planificacion: {
         title: "Planificación Contributiva Estratégica para Individuos y Pequeños Negocios en Estados Unidos",
@@ -357,6 +358,7 @@ export const translations = {
         selfEmployed: "Self-Employed Return",
         rent: "Rent Returns",
         taxAdvising: "Tax Advising",
+        otherServices: "Other Services",
       },
       categories: {
         taxComplianceNegocios: "Business Tax Compliance",
