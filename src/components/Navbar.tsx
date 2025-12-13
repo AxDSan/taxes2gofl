@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     { name: t.nav.about, href: "#about" },
     { name: t.nav.team, href: "#team" },
     { name: t.nav.services, href: "#services" },
-    { name: t.nav.taxes, href: "#do-my-taxes" },
+    { name: t.nav.taxes, href: "https://llenamelostaxes.com", external: true },
     { name: t.nav.portal, href: "https://taxes2gollc.taxdome.com/en-us/signup", external: true },
   ]
 
